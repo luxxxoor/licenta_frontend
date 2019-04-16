@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		263D1C52B13253A352ABF151 /* Pods_onTop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF52C2633A43F82790948DB /* Pods_onTop.framework */; };
 		86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD734225A58F800D0EBE8 /* AppDelegate.swift */; };
 		86ABD73A225A58F800D0EBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ABD738225A58F800D0EBE8 /* Main.storyboard */; };
 		86ABD73C225A58FB00D0EBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ABD73B225A58FB00D0EBE8 /* Assets.xcassets */; };
@@ -17,9 +18,31 @@
 		86ABD751225A5D4D00D0EBE8 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD750225A5D4D00D0EBE8 /* AppCoordinator.swift */; };
 		86ABD753225A5DEA00D0EBE8 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD752225A5DEA00D0EBE8 /* LoginCoordinator.swift */; };
 		86ABD756225A5EB400D0EBE8 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD755225A5EB400D0EBE8 /* LoginVC.swift */; };
+		86ABD759225A72CC00D0EBE8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD758225A72CC00D0EBE8 /* UIColor+Hex.swift */; };
+		86ABD75B225A739900D0EBE8 /* UIColor+CustomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD75A225A739900D0EBE8 /* UIColor+CustomColors.swift */; };
+		86ABD75D225A78E200D0EBE8 /* RegisterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD75C225A78E200D0EBE8 /* RegisterVC.swift */; };
+		86EA31B8225B3013004F7DCA /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31B7225B3013004F7DCA /* ServiceProvider.swift */; };
+		86EA31BB225B306F004F7DCA /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31BA225B306F004F7DCA /* LoginService.swift */; };
+		86EA31BD225B3091004F7DCA /* LoginRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31BC225B3091004F7DCA /* LoginRemoteService.swift */; };
+		86EA31BF225B3191004F7DCA /* LoginHttpRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31BE225B3191004F7DCA /* LoginHttpRemoteService.swift */; };
+		86EA31C2225B336B004F7DCA /* LoginDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31C1225B336B004F7DCA /* LoginDetails.swift */; };
+		86EA31C4225B3989004F7DCA /* LoginService+LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31C3225B3989004F7DCA /* LoginService+LoginError.swift */; };
+		86EA31C6225B8ADF004F7DCA /* ServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31C5225B8ADF004F7DCA /* ServiceFactory.swift */; };
+		86EA31C8225B8B1C004F7DCA /* LoginMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31C7225B8B1C004F7DCA /* LoginMockService.swift */; };
+		86EA31CA225B8B39004F7DCA /* ServiceMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31C9225B8B39004F7DCA /* ServiceMockFactory.swift */; };
+		86EA31CE226509FF004F7DCA /* UIViewController+ErrorHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31CD226509FF004F7DCA /* UIViewController+ErrorHandling.swift */; };
+		86EA31D022650AD6004F7DCA /* RegisterCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31CF22650AD6004F7DCA /* RegisterCoordinator.swift */; };
+		86EA31D222650B60004F7DCA /* RegisterDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31D122650B60004F7DCA /* RegisterDetails.swift */; };
+		86EA31D622650CDD004F7DCA /* RegisterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31D522650CDD004F7DCA /* RegisterService.swift */; };
+		86EA31D822650D50004F7DCA /* RegisterRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31D722650D50004F7DCA /* RegisterRemoteService.swift */; };
+		86EA31DA22650E1D004F7DCA /* RegisterHttpRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31D922650E1D004F7DCA /* RegisterHttpRemoteService.swift */; };
+		86EA31DC22650F79004F7DCA /* RegisterService+RegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31DB22650F79004F7DCA /* RegisterService+RegisterError.swift */; };
+		86EA31DE22651088004F7DCA /* RegisterMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31DD22651088004F7DCA /* RegisterMockService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34E062F6C6D02453A7E65FC6 /* Pods-onTop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onTop.release.xcconfig"; path = "Pods/Target Support Files/Pods-onTop/Pods-onTop.release.xcconfig"; sourceTree = "<group>"; };
+		4EF52C2633A43F82790948DB /* Pods_onTop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_onTop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ABD731225A58F800D0EBE8 /* onTop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ABD734225A58F800D0EBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86ABD739225A58F800D0EBE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -32,6 +55,27 @@
 		86ABD750225A5D4D00D0EBE8 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		86ABD752225A5DEA00D0EBE8 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		86ABD755225A5EB400D0EBE8 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		86ABD758225A72CC00D0EBE8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
+		86ABD75A225A739900D0EBE8 /* UIColor+CustomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+CustomColors.swift"; sourceTree = "<group>"; };
+		86ABD75C225A78E200D0EBE8 /* RegisterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterVC.swift; sourceTree = "<group>"; };
+		86EA31B7225B3013004F7DCA /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		86EA31BA225B306F004F7DCA /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		86EA31BC225B3091004F7DCA /* LoginRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRemoteService.swift; sourceTree = "<group>"; };
+		86EA31BE225B3191004F7DCA /* LoginHttpRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginHttpRemoteService.swift; sourceTree = "<group>"; };
+		86EA31C1225B336B004F7DCA /* LoginDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginDetails.swift; sourceTree = "<group>"; };
+		86EA31C3225B3989004F7DCA /* LoginService+LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginService+LoginError.swift"; sourceTree = "<group>"; };
+		86EA31C5225B8ADF004F7DCA /* ServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceFactory.swift; sourceTree = "<group>"; };
+		86EA31C7225B8B1C004F7DCA /* LoginMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginMockService.swift; sourceTree = "<group>"; };
+		86EA31C9225B8B39004F7DCA /* ServiceMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceMockFactory.swift; sourceTree = "<group>"; };
+		86EA31CD226509FF004F7DCA /* UIViewController+ErrorHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorHandling.swift"; sourceTree = "<group>"; };
+		86EA31CF22650AD6004F7DCA /* RegisterCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterCoordinator.swift; sourceTree = "<group>"; };
+		86EA31D122650B60004F7DCA /* RegisterDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterDetails.swift; sourceTree = "<group>"; };
+		86EA31D522650CDD004F7DCA /* RegisterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterService.swift; sourceTree = "<group>"; };
+		86EA31D722650D50004F7DCA /* RegisterRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRemoteService.swift; sourceTree = "<group>"; };
+		86EA31D922650E1D004F7DCA /* RegisterHttpRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterHttpRemoteService.swift; sourceTree = "<group>"; };
+		86EA31DB22650F79004F7DCA /* RegisterService+RegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterService+RegisterError.swift"; sourceTree = "<group>"; };
+		86EA31DD22651088004F7DCA /* RegisterMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterMockService.swift; sourceTree = "<group>"; };
+		D8D9F997ABB922F3B79BD0A4 /* Pods-onTop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onTop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-onTop/Pods-onTop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +83,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				263D1C52B13253A352ABF151 /* Pods_onTop.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		447906EEA30B462BFF73FA0C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D8D9F997ABB922F3B79BD0A4 /* Pods-onTop.debug.xcconfig */,
+				34E062F6C6D02453A7E65FC6 /* Pods-onTop.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		86ABD728225A58F800D0EBE8 = {
 			isa = PBXGroup;
 			children = (
 				86ABD733225A58F800D0EBE8 /* onTop */,
 				86ABD732225A58F800D0EBE8 /* Products */,
+				447906EEA30B462BFF73FA0C /* Pods */,
+				F188489B43FF038B52295623 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,9 +120,12 @@
 		86ABD733225A58F800D0EBE8 /* onTop */ = {
 			isa = PBXGroup;
 			children = (
+				86EA31C0225B3348004F7DCA /* Model */,
 				86ABD754225A5DFB00D0EBE8 /* ViewControllers */,
 				86ABD74D225A5D1100D0EBE8 /* Coordinators */,
+				86EA31B5225B2FD9004F7DCA /* Business Logic */,
 				86ABD746225A5C5B00D0EBE8 /* Storyboard */,
+				86ABD757225A72AB00D0EBE8 /* Utils */,
 				86ABD734225A58F800D0EBE8 /* AppDelegate.swift */,
 				86ABD73B225A58FB00D0EBE8 /* Assets.xcassets */,
 				86ABD73D225A58FB00D0EBE8 /* LaunchScreen.storyboard */,
@@ -91,6 +150,7 @@
 				86ABD74E225A5D2700D0EBE8 /* Coordinator.swift */,
 				86ABD750225A5D4D00D0EBE8 /* AppCoordinator.swift */,
 				86ABD752225A5DEA00D0EBE8 /* LoginCoordinator.swift */,
+				86EA31CF22650AD6004F7DCA /* RegisterCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -98,9 +158,89 @@
 		86ABD754225A5DFB00D0EBE8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				86EA31CC226509F4004F7DCA /* Extensions */,
 				86ABD755225A5EB400D0EBE8 /* LoginVC.swift */,
+				86ABD75C225A78E200D0EBE8 /* RegisterVC.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		86ABD757225A72AB00D0EBE8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				86ABD758225A72CC00D0EBE8 /* UIColor+Hex.swift */,
+				86ABD75A225A739900D0EBE8 /* UIColor+CustomColors.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		86EA31B5225B2FD9004F7DCA /* Business Logic */ = {
+			isa = PBXGroup;
+			children = (
+				86EA31D322650CC5004F7DCA /* RegisterService */,
+				86EA31B9225B3040004F7DCA /* LoginService */,
+				86EA31B6225B2FFF004F7DCA /* Service */,
+			);
+			path = "Business Logic";
+			sourceTree = "<group>";
+		};
+		86EA31B6225B2FFF004F7DCA /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				86EA31B7225B3013004F7DCA /* ServiceProvider.swift */,
+				86EA31C5225B8ADF004F7DCA /* ServiceFactory.swift */,
+				86EA31C9225B8B39004F7DCA /* ServiceMockFactory.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		86EA31B9225B3040004F7DCA /* LoginService */ = {
+			isa = PBXGroup;
+			children = (
+				86EA31BA225B306F004F7DCA /* LoginService.swift */,
+				86EA31BC225B3091004F7DCA /* LoginRemoteService.swift */,
+				86EA31BE225B3191004F7DCA /* LoginHttpRemoteService.swift */,
+				86EA31C3225B3989004F7DCA /* LoginService+LoginError.swift */,
+				86EA31C7225B8B1C004F7DCA /* LoginMockService.swift */,
+			);
+			path = LoginService;
+			sourceTree = "<group>";
+		};
+		86EA31C0225B3348004F7DCA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				86EA31C1225B336B004F7DCA /* LoginDetails.swift */,
+				86EA31D122650B60004F7DCA /* RegisterDetails.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86EA31CC226509F4004F7DCA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				86EA31CD226509FF004F7DCA /* UIViewController+ErrorHandling.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		86EA31D322650CC5004F7DCA /* RegisterService */ = {
+			isa = PBXGroup;
+			children = (
+				86EA31D522650CDD004F7DCA /* RegisterService.swift */,
+				86EA31D722650D50004F7DCA /* RegisterRemoteService.swift */,
+				86EA31D922650E1D004F7DCA /* RegisterHttpRemoteService.swift */,
+				86EA31DB22650F79004F7DCA /* RegisterService+RegisterError.swift */,
+				86EA31DD22651088004F7DCA /* RegisterMockService.swift */,
+			);
+			path = RegisterService;
+			sourceTree = "<group>";
+		};
+		F188489B43FF038B52295623 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EF52C2633A43F82790948DB /* Pods_onTop.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -110,9 +250,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 86ABD743225A58FB00D0EBE8 /* Build configuration list for PBXNativeTarget "onTop" */;
 			buildPhases = (
+				14635DBB65BA79E43CADD967 /* [CP] Check Pods Manifest.lock */,
 				86ABD72D225A58F800D0EBE8 /* Sources */,
 				86ABD72E225A58F800D0EBE8 /* Frameworks */,
 				86ABD72F225A58F800D0EBE8 /* Resources */,
+				2E770ECD0BF0372AB9572889 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -169,18 +311,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		14635DBB65BA79E43CADD967 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-onTop-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2E770ECD0BF0372AB9572889 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-onTop/Pods-onTop-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-onTop/Pods-onTop-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		86ABD72D225A58F800D0EBE8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86EA31D822650D50004F7DCA /* RegisterRemoteService.swift in Sources */,
+				86EA31C4225B3989004F7DCA /* LoginService+LoginError.swift in Sources */,
 				86ABD751225A5D4D00D0EBE8 /* AppCoordinator.swift in Sources */,
+				86ABD759225A72CC00D0EBE8 /* UIColor+Hex.swift in Sources */,
 				86ABD756225A5EB400D0EBE8 /* LoginVC.swift in Sources */,
+				86EA31BD225B3091004F7DCA /* LoginRemoteService.swift in Sources */,
+				86EA31CA225B8B39004F7DCA /* ServiceMockFactory.swift in Sources */,
+				86EA31D622650CDD004F7DCA /* RegisterService.swift in Sources */,
 				86ABD753225A5DEA00D0EBE8 /* LoginCoordinator.swift in Sources */,
+				86EA31D222650B60004F7DCA /* RegisterDetails.swift in Sources */,
+				86ABD75B225A739900D0EBE8 /* UIColor+CustomColors.swift in Sources */,
 				86ABD74A225A5CC000D0EBE8 /* UIStoryboard+AppStoryboards.swift in Sources */,
+				86EA31BF225B3191004F7DCA /* LoginHttpRemoteService.swift in Sources */,
+				86EA31CE226509FF004F7DCA /* UIViewController+ErrorHandling.swift in Sources */,
+				86EA31C8225B8B1C004F7DCA /* LoginMockService.swift in Sources */,
 				86ABD74F225A5D2700D0EBE8 /* Coordinator.swift in Sources */,
+				86EA31BB225B306F004F7DCA /* LoginService.swift in Sources */,
 				86ABD748225A5C8500D0EBE8 /* StoryboardViewController.swift in Sources */,
+				86EA31C2225B336B004F7DCA /* LoginDetails.swift in Sources */,
+				86EA31DE22651088004F7DCA /* RegisterMockService.swift in Sources */,
 				86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */,
+				86EA31DC22650F79004F7DCA /* RegisterService+RegisterError.swift in Sources */,
+				86EA31D022650AD6004F7DCA /* RegisterCoordinator.swift in Sources */,
+				86EA31DA22650E1D004F7DCA /* RegisterHttpRemoteService.swift in Sources */,
+				86EA31C6225B8ADF004F7DCA /* ServiceFactory.swift in Sources */,
+				86EA31B8225B3013004F7DCA /* ServiceProvider.swift in Sources */,
+				86ABD75D225A78E200D0EBE8 /* RegisterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,6 +533,7 @@
 		};
 		86ABD744225A58FB00D0EBE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8D9F997ABB922F3B79BD0A4 /* Pods-onTop.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -342,6 +552,7 @@
 		};
 		86ABD745225A58FB00D0EBE8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E062F6C6D02453A7E65FC6 /* Pods-onTop.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

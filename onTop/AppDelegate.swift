@@ -18,7 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         let window = UIWindow(frame: UIScreen.main.bounds)
-        self.appCoordinator = AppCoordinator(window: window)
+        #if DEBUG
+        self.appCoordinator = AppCoordinator(window: window, serviceProvider: ServiceMockFactory())
+        #else
+        self.appCoordinator = AppCoordinator(window: window, serviceProvider: ServiceFactory())
+        #endif
         self.window = window
         
         appCoordinator?.start()
