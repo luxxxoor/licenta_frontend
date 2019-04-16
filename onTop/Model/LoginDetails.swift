@@ -9,6 +9,6 @@
 import Foundation
 
 struct LoginDetails: Encodable {
-    let nickName: String
+    let userName: String
     let password: String
 }

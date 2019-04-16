@@ -14,10 +14,10 @@ class LoginHttpRemotService: LoginRemoteService {
         
         let url = String(format: Constants.loginUrl)
         guard let serviceUrl = URL(string: url) else { return }
-        let parameterDictionary = ["nickname" : details.nickName, "password" : details.password]
+        let parameterDictionary = ["username" : details.userName, "password" : details.password]
         var request = URLRequest(url: serviceUrl)
         request.httpMethod = "POST"
-        request.setValue("Content-Type", forHTTPHeaderField: "application/json")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameterDictionary, options: []) else {
             return
         }
@@ -30,12 +30,16 @@ class LoginHttpRemotService: LoginRemoteService {
                 return
             }
             
-            if let httpResponse = response as? HTTPURLResponse {
-                print("statusCode: \(httpResponse.statusCode)")
-            }
+            guard let httpResponse = response as? HTTPURLResponse else { fatalError() }
             
-            DispatchQueue.main.async {
-                //completion(exists ? nil : LoginService.LoginError.invalidNumber)
+            if httpResponse.statusCode == 200 {
+                DispatchQueue.main.async { completion(nil) }
+            } else if httpResponse.statusCode == 401 {
+                let error = LoginService.LoginError.unauthorized
+                DispatchQueue.main.async { completion(error) }
+            } else {
+                let error = LoginService.LoginError.serverError
+                DispatchQueue.main.async { completion(error) }
             }
         }.resume()
         

@@ -16,6 +16,12 @@ class RegisterService {
     }
     
     func register(details: RegisterDetails, completion: @escaping LoginRemoteService.LoginCompletion) {
+        if details.password != details.repassword {
+            let error = RegisterService.RegisterError.passwordsNotMatch
+            completion(error)
+            return
+        }
+        
         remote.register(details: details, completion: completion)
     }
 }

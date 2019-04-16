@@ -1,0 +1,6 @@
+framework module Pods_onTop {
+  umbrella header "Pods-onTop-umbrella.h"
+
+  export *
+  module * { export * }
+}

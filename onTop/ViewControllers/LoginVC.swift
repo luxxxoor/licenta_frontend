@@ -21,7 +21,7 @@ class LoginVC: UIViewController {
     @IBAction func didTapLogin(_ sender: UIButton) {
         guard let delegate = delegate, let accountName = accountNameField.text, let password = passwordField.text else { return }
         
-        let details = LoginDetails(nickName: accountName, password: password)
+        let details = LoginDetails(userName: accountName, password: password)
         delegate.loginViewController(self, didTapLogin: details)
     }
     

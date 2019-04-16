@@ -9,11 +9,11 @@
 import Foundation
 
 class LoginMockService : LoginRemoteService {
-    let users: [LoginDetails] = [LoginDetails(nickName: "testuser", password: "password")]
+    let users: [LoginDetails] = [LoginDetails(userName: "testuser", password: "password")]
     
     func login(details: LoginDetails, completion: @escaping LoginMockService.LoginCompletion) {
         users.forEach {
-            if $0.nickName == details.nickName && $0.password == details.password {
+            if $0.userName == details.userName && $0.password == details.password {
                 completion(nil)
                 return
             }

@@ -15,5 +15,5 @@ protocol LoginRemoteService {
 }
 
 struct LoginRemoteServiceConstants {
-        static let address = "http://localhost:8604/"
+        static let address = "http://localhost:8604"
 }

@@ -38,6 +38,11 @@ class RegisterVC: UIViewController {
         
         delegate.registerViewController(self, didTapRegister: details)
     }
+    
+    func resetPasswordFields() {
+        passwordField.text = ""
+        repasswordField.text = ""
+    }
 }
 
 extension RegisterVC: StoryboardViewController {

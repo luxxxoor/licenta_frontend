@@ -11,15 +11,18 @@ import Foundation
 extension RegisterService {
     
     enum RegisterError: LocalizedError {
-        case forbidden(reason: String)
+        case forbidden
         case serverError
+        case passwordsNotMatch
         
         var errorDescription: String? {
             switch self {
-            case .forbidden(let reason):
-                return reason
+            case .forbidden:
+                return "An user with your picked nickname already exists."
             case .serverError:
                 return "There was a server error. Operation was canceled."
+            case .passwordsNotMatch:
+                return "Provided passwords do not match."
             }
         }
     }

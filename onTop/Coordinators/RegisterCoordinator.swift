@@ -32,6 +32,9 @@ extension RegisterCoordinator: RegisterVCDelegate {
             [unowned self] error in
             
             if let error = error {
+                if error is RegisterService.RegisterError {
+                    registerVC.resetPasswordFields()
+                }
                 registerVC.showError(error)
                 return
             } else {
