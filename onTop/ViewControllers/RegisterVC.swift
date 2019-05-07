@@ -11,6 +11,9 @@ import UIKit
 protocol RegisterVCDelegate: AnyObject {
     func registerViewController(_ registerVC: RegisterVC, didTapRegister details: RegisterDetails)
     func registerViewControllerDidTapBack(_ registerVC: RegisterVC)
+    func registerViewController(_ registerVC: RegisterVC, didEditAccountName accountName: String)
+    func registerViewController(_ registerVC: RegisterVC, didEditPassword password: String)
+    func registerViewController(_ registerVC: RegisterVC, didEditRepassowrd repassword: String)
 }
 
 class RegisterVC: UIViewController {
@@ -18,6 +21,8 @@ class RegisterVC: UIViewController {
     @IBOutlet private weak var accountEmailField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
     @IBOutlet private weak var repasswordField: UITextField!
+    @IBOutlet weak var accountNameErrorLabel: UILabel!
+    @IBOutlet weak var passwordErrorLabel: UILabel!
     weak var delegate: RegisterVCDelegate?
     
     override func viewDidLoad() {
@@ -44,10 +49,26 @@ class RegisterVC: UIViewController {
         delegate?.registerViewControllerDidTapBack(self)
     }
     
+    @IBAction private func didEditAccountName(_ sender: UITextField) {
+        guard let accountName = sender.text else { return }
+        delegate?.registerViewController(self, didEditAccountName: accountName)
+    }
+    
+    @IBAction private func didEditPassowrd(_ sender: UITextField) {
+        guard let password = sender.text else { return }
+        delegate?.registerViewController(self, didEditPassword: password)
+    }
+    
+    @IBAction private func didEditRepassword(_ sender: UITextField) {
+        guard let repassword = sender.text else { return }
+        delegate?.registerViewController(self, didEditRepassowrd: repassword)
+    }
+    
     
     func resetPasswordFields() {
         passwordField.text = ""
         repasswordField.text = ""
+        passwordErrorLabel.isHidden = true
     }
 }
 

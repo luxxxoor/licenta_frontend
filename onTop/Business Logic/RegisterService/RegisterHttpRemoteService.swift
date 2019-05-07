@@ -50,7 +50,7 @@ class RegisterHttpRemotService: RegisterRemoteService {
                     let error = RegisterService.RegisterError.passwordTooShort
                     DispatchQueue.main.async { completion(error) }
                 } else if exception == Constants.alreadyExistingUserException {
-                    let error = RegisterService.RegisterError.forbidden
+                    let error = RegisterService.RegisterError.alreadyExistingUserException
                     DispatchQueue.main.async { completion(error) }
                 } else {
                     let error = RegisterService.RegisterError.serverError
@@ -59,11 +59,44 @@ class RegisterHttpRemotService: RegisterRemoteService {
             }
         }.resume()
     }
+    
+    func isAccountNameAvailable(details: RegisterDetails, completion: @escaping IsAccountNameAvailableCompletion) {
+        let url = String(format: Constants.checkAccountNameUrl.replacingOccurrences(of: "<nickName>", with: details.nickName))
+        guard let urlEncoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
+            let serviceUrl = URL(string: urlEncoded)
+            else { return }
+        var request = URLRequest(url: serviceUrl)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        
+        let session = URLSession.shared
+        session.dataTask(with: request) {
+            (data, response, error) in
+            if let error = error {
+                DispatchQueue.main.async { completion(.failure(error)) }
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse else { fatalError() }
+            
+            
+            if httpResponse.statusCode == 200 {
+                DispatchQueue.main.async { completion(.success(true)) }
+            } else if httpResponse.statusCode == 403 {
+                DispatchQueue.main.async { completion(.success(false)) }
+            } else {
+                let error = RegisterService.RegisterError.serverError
+                DispatchQueue.main.async { completion(.failure(error)) }
+            }
+        }.resume()
+    }
 }
 
 extension RegisterHttpRemotService {
     enum Constants {
         static let registerUrl = "http://localhost:8601/registration/v1/register/"
+        static let checkAccountNameUrl = "http://localhost:8601/user/v1/name-availability?nickName=<nickName>"
         static let passwordTooShortException = "com.licenta.usm.Exceptions.PasswordTooShortException"
         static let alreadyExistingUserException = "com.licenta.usm.Exceptions.AlreadyExistingUserException"
     }

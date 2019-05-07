@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		263D1C52B13253A352ABF151 /* Pods_onTop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF52C2633A43F82790948DB /* Pods_onTop.framework */; };
+		868E4DF02281CBC4002581B7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E4DEF2281CBC4002581B7 /* Result.swift */; };
 		86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD734225A58F800D0EBE8 /* AppDelegate.swift */; };
 		86ABD73A225A58F800D0EBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ABD738225A58F800D0EBE8 /* Main.storyboard */; };
 		86ABD73C225A58FB00D0EBE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86ABD73B225A58FB00D0EBE8 /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		34E062F6C6D02453A7E65FC6 /* Pods-onTop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onTop.release.xcconfig"; path = "Pods/Target Support Files/Pods-onTop/Pods-onTop.release.xcconfig"; sourceTree = "<group>"; };
 		4EF52C2633A43F82790948DB /* Pods_onTop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_onTop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		868E4DEF2281CBC4002581B7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		86ABD731225A58F800D0EBE8 /* onTop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ABD734225A58F800D0EBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86ABD739225A58F800D0EBE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 		86EA31B5225B2FD9004F7DCA /* Business Logic */ = {
 			isa = PBXGroup;
 			children = (
+				868E4DEF2281CBC4002581B7 /* Result.swift */,
 				86EA31D322650CC5004F7DCA /* RegisterService */,
 				86EA31B9225B3040004F7DCA /* LoginService */,
 				86EA31B6225B2FFF004F7DCA /* Service */,
@@ -381,6 +384,7 @@
 				86ABD74F225A5D2700D0EBE8 /* Coordinator.swift in Sources */,
 				86EA31BB225B306F004F7DCA /* LoginService.swift in Sources */,
 				86ABD748225A5C8500D0EBE8 /* StoryboardViewController.swift in Sources */,
+				868E4DF02281CBC4002581B7 /* Result.swift in Sources */,
 				86EA31C2225B336B004F7DCA /* LoginDetails.swift in Sources */,
 				86EA31DE22651088004F7DCA /* RegisterMockService.swift in Sources */,
 				86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */,

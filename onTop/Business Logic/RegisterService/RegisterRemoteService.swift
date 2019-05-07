@@ -10,8 +10,10 @@ import Foundation
 
 protocol RegisterRemoteService {
     typealias RegisterCompletion = (Error?) -> Void
+    typealias IsAccountNameAvailableCompletion = (Result<Bool>) -> Void
     
     func register(details: RegisterDetails, completion: @escaping RegisterCompletion)
+    func isAccountNameAvailable(details: RegisterDetails, completion: @escaping IsAccountNameAvailableCompletion)
 }
 
 struct RegisterRemoteServiceConstants {

@@ -15,6 +15,7 @@ extension RegisterService {
         case alreadyExistingUserException
         case passwordsNotMatch
         case passwordTooShort
+        case userNameTooShort
         
         var errorDescription: String? {
             switch self {
@@ -26,6 +27,8 @@ extension RegisterService {
                 return "Provided passwords do not match."
             case .passwordTooShort:
                 return "Password has to be at least 5 characters long."
+            case .userNameTooShort:
+                return "UserName has to be at least 5 characters long."
             }
         }
     }

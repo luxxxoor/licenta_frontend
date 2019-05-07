@@ -12,4 +12,8 @@ class RegisterMockService : RegisterRemoteService {
     func register(details: RegisterDetails, completion: @escaping RegisterMockService.RegisterCompletion) {
         completion(nil)
     }
+    
+    func isAccountNameAvailable(details: RegisterDetails, completion: @escaping IsAccountNameAvailableCompletion) {
+        completion(.success(true))
+    }
 }
