@@ -43,5 +43,8 @@ extension RegisterCoordinator: RegisterVCDelegate {
         }
     }
     
+    func registerViewControllerDidTapBack(_ registerVC: RegisterVC) {
+        presenter.popViewController(animated: true)
+    }
 }
 

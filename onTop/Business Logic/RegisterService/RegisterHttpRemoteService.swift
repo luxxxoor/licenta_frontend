@@ -31,21 +31,40 @@ class RegisterHttpRemotService: RegisterRemoteService {
             
             guard let httpResponse = response as? HTTPURLResponse else { fatalError() }
             
+            
             if httpResponse.statusCode == 200 {
                 DispatchQueue.main.async { completion(nil) }
-            } else if httpResponse.statusCode == 403 {
-                let error = RegisterService.RegisterError.forbidden
-                DispatchQueue.main.async { completion(error) }
             } else {
-                let error = RegisterService.RegisterError.serverError
-                DispatchQueue.main.async { completion(error) }
+                guard
+                    let data = data,
+                    let json = (try? JSONSerialization.jsonObject(with: data, options: [])) as? NSDictionary,
+                    let errors = json["errors"] as? [String]
+                    else {
+                        DispatchQueue.main.async { completion(LoginService.LoginError.serverError) }
+                        return
+                }
+                
+                let exception = errors[0]
+                
+                if exception == Constants.passwordTooShortException {
+                    let error = RegisterService.RegisterError.passwordTooShort
+                    DispatchQueue.main.async { completion(error) }
+                } else if exception == Constants.alreadyExistingUserException {
+                    let error = RegisterService.RegisterError.forbidden
+                    DispatchQueue.main.async { completion(error) }
+                } else {
+                    let error = RegisterService.RegisterError.serverError
+                    DispatchQueue.main.async { completion(error) }
+                }
             }
-            }.resume()
+        }.resume()
     }
 }
 
 extension RegisterHttpRemotService {
     enum Constants {
         static let registerUrl = "http://localhost:8601/registration/v1/register/"
+        static let passwordTooShortException = "com.licenta.usm.Exceptions.PasswordTooShortException"
+        static let alreadyExistingUserException = "com.licenta.usm.Exceptions.AlreadyExistingUserException"
     }
 }

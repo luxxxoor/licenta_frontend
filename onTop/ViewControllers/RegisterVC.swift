@@ -10,6 +10,7 @@ import UIKit
 
 protocol RegisterVCDelegate: AnyObject {
     func registerViewController(_ registerVC: RegisterVC, didTapRegister details: RegisterDetails)
+    func registerViewControllerDidTapBack(_ registerVC: RegisterVC)
 }
 
 class RegisterVC: UIViewController {
@@ -23,7 +24,7 @@ class RegisterVC: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func didTapRegister(_ sender: UIButton) {
+    @IBAction private func didTapRegister(_ sender: UIButton) {
         guard let delegate = delegate,
             let accountName = accountNameField.text,
             let email = accountEmailField.text,
@@ -38,6 +39,11 @@ class RegisterVC: UIViewController {
         
         delegate.registerViewController(self, didTapRegister: details)
     }
+    
+    @IBAction private func didTapBack(_ sender: UIButton) {
+        delegate?.registerViewControllerDidTapBack(self)
+    }
+    
     
     func resetPasswordFields() {
         passwordField.text = ""

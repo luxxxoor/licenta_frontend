@@ -123,6 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="365" y="88"/>
         </scene>
         <!--RegisterVC-->
         <scene sceneID="BTj-Z7-1rP">
@@ -182,6 +183,14 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="didTapRegister:" destination="RqC-Vr-8hb" eventType="touchUpInside" id="CBQ-Is-5UO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytt-hl-xWG">
+                                <rect key="frame" x="19" y="44" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="&lt; Back"/>
+                                <connections>
+                                    <action selector="didTapBack:" destination="RqC-Vr-8hb" eventType="touchUpInside" id="c7I-QX-8qC"/>
                                 </connections>
                             </button>
                         </subviews>

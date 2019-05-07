@@ -11,18 +11,21 @@ import Foundation
 extension RegisterService {
     
     enum RegisterError: LocalizedError {
-        case forbidden
         case serverError
+        case alreadyExistingUserException
         case passwordsNotMatch
+        case passwordTooShort
         
         var errorDescription: String? {
             switch self {
-            case .forbidden:
-                return "An user with your picked nickname already exists."
             case .serverError:
                 return "There was a server error. Operation was canceled."
+            case .alreadyExistingUserException:
+                return "An user with your picked nickname already exists."
             case .passwordsNotMatch:
                 return "Provided passwords do not match."
+            case .passwordTooShort:
+                return "Password has to be at least 5 characters long."
             }
         }
     }
