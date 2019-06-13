@@ -16,7 +16,7 @@ protocol RegisterVCDelegate: AnyObject {
     func registerViewController(_ registerVC: RegisterVC, didEditRepassowrd repassword: String)
 }
 
-class RegisterVC: UIViewController {
+class RegisterVC: UIViewController, StoryboardViewController {
     @IBOutlet private weak var accountNameField: UITextField!
     @IBOutlet private weak var accountEmailField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
@@ -70,7 +70,4 @@ class RegisterVC: UIViewController {
         repasswordField.text = ""
         passwordErrorLabel.isHidden = true
     }
-}
-
-extension RegisterVC: StoryboardViewController {
 }

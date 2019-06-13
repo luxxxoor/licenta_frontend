@@ -262,5 +262,74 @@
             </objects>
             <point key="canvasLocation" x="1068" y="88"/>
         </scene>
+        <!--Tab BarVC-->
+        <scene sceneID="b16-W3-ef7">
+            <objects>
+                <tabBarController storyboardIdentifier="TabBarVC" id="RTq-ss-PX7" customClass="TabBarVC" customModule="onTop" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aMc-8g-mva">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pt0-i5-DRT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="769"/>
+        </scene>
+        <!--Announcements TabVC-->
+        <scene sceneID="Q7M-iV-YDn">
+            <objects>
+                <viewController storyboardIdentifier="AnnouncementsTabVC" id="SpN-5B-l8c" customClass="AnnouncementsTabVC" customModule="onTop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Knf-B5-PVy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-If-BJN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="announcementsCell" id="02g-0c-Fuw" customClass="AnnouncementHeadlineTableViewCell" customModule="onTop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="02g-0c-Fuw" id="H3s-n7-9F0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ss0-qC-dyw" customClass="AnnouncementHeadline" customModule="onTop" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Ss0-qC-dyw" secondAttribute="bottom" id="4bo-St-EhR"/>
+                                                <constraint firstItem="Ss0-qC-dyw" firstAttribute="top" secondItem="H3s-n7-9F0" secondAttribute="top" id="aHh-uL-zvN"/>
+                                                <constraint firstItem="Ss0-qC-dyw" firstAttribute="leading" secondItem="H3s-n7-9F0" secondAttribute="leading" id="nmw-e3-dAk"/>
+                                                <constraint firstAttribute="trailing" secondItem="Ss0-qC-dyw" secondAttribute="trailing" id="pea-1k-b8q"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="announcementHeadlineView" destination="Ss0-qC-dyw" id="edo-3s-K3m"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Zd8-If-BJN" firstAttribute="leading" secondItem="Ijn-l6-abV" secondAttribute="leading" id="G59-97-8kL"/>
+                            <constraint firstItem="Ijn-l6-abV" firstAttribute="bottom" secondItem="Zd8-If-BJN" secondAttribute="bottom" id="SiT-lm-QVd"/>
+                            <constraint firstItem="Ijn-l6-abV" firstAttribute="trailing" secondItem="Zd8-If-BJN" secondAttribute="trailing" id="TYR-ex-ydP"/>
+                            <constraint firstItem="Zd8-If-BJN" firstAttribute="top" secondItem="Ijn-l6-abV" secondAttribute="top" id="dhn-0b-dBN"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ijn-l6-abV"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Zd8-If-BJN" id="vhd-0P-Ww4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BE1-V8-Oo4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="364" y="1503"/>
+        </scene>
     </scenes>
 </document>

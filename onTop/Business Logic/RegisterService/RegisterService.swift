@@ -36,7 +36,7 @@ class RegisterService {
     }
     
     func isAccountNameAvailable(details: RegisterDetails, completion: @escaping RegisterRemoteService.IsAccountNameAvailableCompletion) {
-        if details.nickName.count < 5 {
+        if (details.nickName?.count ?? 0) < 5 {
             completion(.failure(RegisterService.RegisterError.userNameTooShort))
             return
         }

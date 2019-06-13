@@ -11,4 +11,5 @@ import Foundation
 protocol ServiceProvider {
     var loginService: LoginService { get }
     var registerService: RegisterService { get }
+    var announcementsService: AnnouncementsService { get }
 }

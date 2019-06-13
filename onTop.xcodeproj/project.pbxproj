@@ -8,6 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		263D1C52B13253A352ABF151 /* Pods_onTop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EF52C2633A43F82790948DB /* Pods_onTop.framework */; };
+		867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */; };
+		867EDB2722ADA6B900806528 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2622ADA6B900806528 /* TabBarVC.swift */; };
+		867EDB2922ADAB0F00806528 /* AnnouncementsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */; };
+		867EDB2C22ADAFC200806528 /* AnnouncementsTabVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2B22ADAFC200806528 /* AnnouncementsTabVC.swift */; };
+		867EDB2F22ADB9F000806528 /* AnnouncementHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2E22ADB9F000806528 /* AnnouncementHeadline.swift */; };
+		867EDB3122ADBA0C00806528 /* AnnouncementHeadline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867EDB3022ADBA0C00806528 /* AnnouncementHeadline.xib */; };
+		867EDB3422ADBA7600806528 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3322ADBA7600806528 /* NibView.swift */; };
+		867EDB3622ADBAA900806528 /* IBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3522ADBAA900806528 /* IBView.swift */; };
+		867EDB3922ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3822ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift */; };
+		867EDB3D22ADC40700806528 /* AnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3C22ADC40700806528 /* AnnouncementsService.swift */; };
+		867EDB3F22ADC57300806528 /* AnnouncementsRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3E22ADC57300806528 /* AnnouncementsRemoteService.swift */; };
+		867EDB4122ADC5BA00806528 /* AnnouncementsRealService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB4022ADC5BA00806528 /* AnnouncementsRealService.swift */; };
+		867EDB4322ADC5C900806528 /* AnnouncementsMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB4222ADC5C900806528 /* AnnouncementsMockService.swift */; };
+		867EDB4522ADC62200806528 /* Announcement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB4422ADC62200806528 /* Announcement.swift */; };
+		867EDB4722ADC9E000806528 /* AnnouncementsTabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB4622ADC9E000806528 /* AnnouncementsTabVM.swift */; };
 		868E4DF02281CBC4002581B7 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 868E4DEF2281CBC4002581B7 /* Result.swift */; };
 		86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86ABD734225A58F800D0EBE8 /* AppDelegate.swift */; };
 		86ABD73A225A58F800D0EBE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86ABD738225A58F800D0EBE8 /* Main.storyboard */; };
@@ -44,6 +59,21 @@
 /* Begin PBXFileReference section */
 		34E062F6C6D02453A7E65FC6 /* Pods-onTop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onTop.release.xcconfig"; path = "Pods/Target Support Files/Pods-onTop/Pods-onTop.release.xcconfig"; sourceTree = "<group>"; };
 		4EF52C2633A43F82790948DB /* Pods_onTop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_onTop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		867EDB2622ADA6B900806528 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
+		867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTabCoordinator.swift; sourceTree = "<group>"; };
+		867EDB2B22ADAFC200806528 /* AnnouncementsTabVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTabVC.swift; sourceTree = "<group>"; };
+		867EDB2E22ADB9F000806528 /* AnnouncementHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementHeadline.swift; sourceTree = "<group>"; };
+		867EDB3022ADBA0C00806528 /* AnnouncementHeadline.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementHeadline.xib; sourceTree = "<group>"; };
+		867EDB3322ADBA7600806528 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
+		867EDB3522ADBAA900806528 /* IBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBView.swift; sourceTree = "<group>"; };
+		867EDB3822ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementHeadlineTableViewCell.swift; sourceTree = "<group>"; };
+		867EDB3C22ADC40700806528 /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
+		867EDB3E22ADC57300806528 /* AnnouncementsRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsRemoteService.swift; sourceTree = "<group>"; };
+		867EDB4022ADC5BA00806528 /* AnnouncementsRealService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsRealService.swift; sourceTree = "<group>"; };
+		867EDB4222ADC5C900806528 /* AnnouncementsMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsMockService.swift; sourceTree = "<group>"; };
+		867EDB4422ADC62200806528 /* Announcement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Announcement.swift; sourceTree = "<group>"; };
+		867EDB4622ADC9E000806528 /* AnnouncementsTabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTabVM.swift; sourceTree = "<group>"; };
 		868E4DEF2281CBC4002581B7 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		86ABD731225A58F800D0EBE8 /* onTop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86ABD734225A58F800D0EBE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +131,61 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		867EDB2A22ADAFAA00806528 /* TabViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				867EDB2B22ADAFC200806528 /* AnnouncementsTabVC.swift */,
+			);
+			path = TabViewControllers;
+			sourceTree = "<group>";
+		};
+		867EDB2D22ADB90700806528 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				867EDB3222ADBA5100806528 /* NibViewBase */,
+				867EDB3722ADC26100806528 /* NewsHeadline */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		867EDB3222ADBA5100806528 /* NibViewBase */ = {
+			isa = PBXGroup;
+			children = (
+				867EDB3322ADBA7600806528 /* NibView.swift */,
+				867EDB3522ADBAA900806528 /* IBView.swift */,
+			);
+			path = NibViewBase;
+			sourceTree = "<group>";
+		};
+		867EDB3722ADC26100806528 /* NewsHeadline */ = {
+			isa = PBXGroup;
+			children = (
+				867EDB2E22ADB9F000806528 /* AnnouncementHeadline.swift */,
+				867EDB3022ADBA0C00806528 /* AnnouncementHeadline.xib */,
+				867EDB3822ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift */,
+			);
+			path = NewsHeadline;
+			sourceTree = "<group>";
+		};
+		867EDB3A22ADC3A100806528 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				867EDB4622ADC9E000806528 /* AnnouncementsTabVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		867EDB3B22ADC3E600806528 /* AnnouncementsService */ = {
+			isa = PBXGroup;
+			children = (
+				867EDB3C22ADC40700806528 /* AnnouncementsService.swift */,
+				867EDB3E22ADC57300806528 /* AnnouncementsRemoteService.swift */,
+				867EDB4022ADC5BA00806528 /* AnnouncementsRealService.swift */,
+				867EDB4222ADC5C900806528 /* AnnouncementsMockService.swift */,
+			);
+			path = AnnouncementsService;
+			sourceTree = "<group>";
+		};
 		86ABD728225A58F800D0EBE8 = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +208,8 @@
 			isa = PBXGroup;
 			children = (
 				86EA31C0225B3348004F7DCA /* Model */,
+				867EDB3A22ADC3A100806528 /* ViewModel */,
+				867EDB2D22ADB90700806528 /* Views */,
 				86ABD754225A5DFB00D0EBE8 /* ViewControllers */,
 				86ABD74D225A5D1100D0EBE8 /* Coordinators */,
 				86EA31B5225B2FD9004F7DCA /* Business Logic */,
@@ -153,6 +240,8 @@
 				86ABD750225A5D4D00D0EBE8 /* AppCoordinator.swift */,
 				86ABD752225A5DEA00D0EBE8 /* LoginCoordinator.swift */,
 				86EA31CF22650AD6004F7DCA /* RegisterCoordinator.swift */,
+				867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */,
+				867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -163,6 +252,8 @@
 				86EA31CC226509F4004F7DCA /* Extensions */,
 				86ABD755225A5EB400D0EBE8 /* LoginVC.swift */,
 				86ABD75C225A78E200D0EBE8 /* RegisterVC.swift */,
+				867EDB2622ADA6B900806528 /* TabBarVC.swift */,
+				867EDB2A22ADAFAA00806528 /* TabViewControllers */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -182,6 +273,7 @@
 				868E4DEF2281CBC4002581B7 /* Result.swift */,
 				86EA31D322650CC5004F7DCA /* RegisterService */,
 				86EA31B9225B3040004F7DCA /* LoginService */,
+				867EDB3B22ADC3E600806528 /* AnnouncementsService */,
 				86EA31B6225B2FFF004F7DCA /* Service */,
 			);
 			path = "Business Logic";
@@ -214,6 +306,7 @@
 			children = (
 				86EA31C1225B336B004F7DCA /* LoginDetails.swift */,
 				86EA31D122650B60004F7DCA /* RegisterDetails.swift */,
+				867EDB4422ADC62200806528 /* Announcement.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -306,6 +399,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867EDB3122ADBA0C00806528 /* AnnouncementHeadline.xib in Resources */,
 				86ABD73F225A58FB00D0EBE8 /* LaunchScreen.storyboard in Resources */,
 				86ABD73C225A58FB00D0EBE8 /* Assets.xcassets in Resources */,
 				86ABD73A225A58F800D0EBE8 /* Main.storyboard in Resources */,
@@ -366,14 +460,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				867EDB3D22ADC40700806528 /* AnnouncementsService.swift in Sources */,
 				86EA31D822650D50004F7DCA /* RegisterRemoteService.swift in Sources */,
 				86EA31C4225B3989004F7DCA /* LoginService+LoginError.swift in Sources */,
+				867EDB3622ADBAA900806528 /* IBView.swift in Sources */,
 				86ABD751225A5D4D00D0EBE8 /* AppCoordinator.swift in Sources */,
+				867EDB4522ADC62200806528 /* Announcement.swift in Sources */,
+				867EDB2C22ADAFC200806528 /* AnnouncementsTabVC.swift in Sources */,
 				86ABD759225A72CC00D0EBE8 /* UIColor+Hex.swift in Sources */,
 				86ABD756225A5EB400D0EBE8 /* LoginVC.swift in Sources */,
+				867EDB3F22ADC57300806528 /* AnnouncementsRemoteService.swift in Sources */,
+				867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */,
+				867EDB3922ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift in Sources */,
 				86EA31BD225B3091004F7DCA /* LoginRemoteService.swift in Sources */,
+				867EDB2922ADAB0F00806528 /* AnnouncementsTabCoordinator.swift in Sources */,
 				86EA31CA225B8B39004F7DCA /* ServiceMockFactory.swift in Sources */,
 				86EA31D622650CDD004F7DCA /* RegisterService.swift in Sources */,
+				867EDB4122ADC5BA00806528 /* AnnouncementsRealService.swift in Sources */,
 				86ABD753225A5DEA00D0EBE8 /* LoginCoordinator.swift in Sources */,
 				86EA31D222650B60004F7DCA /* RegisterDetails.swift in Sources */,
 				86ABD75B225A739900D0EBE8 /* UIColor+CustomColors.swift in Sources */,
@@ -381,18 +484,23 @@
 				86EA31BF225B3191004F7DCA /* LoginHttpRemoteService.swift in Sources */,
 				86EA31CE226509FF004F7DCA /* UIViewController+ErrorHandling.swift in Sources */,
 				86EA31C8225B8B1C004F7DCA /* LoginMockService.swift in Sources */,
+				867EDB2F22ADB9F000806528 /* AnnouncementHeadline.swift in Sources */,
 				86ABD74F225A5D2700D0EBE8 /* Coordinator.swift in Sources */,
 				86EA31BB225B306F004F7DCA /* LoginService.swift in Sources */,
 				86ABD748225A5C8500D0EBE8 /* StoryboardViewController.swift in Sources */,
 				868E4DF02281CBC4002581B7 /* Result.swift in Sources */,
 				86EA31C2225B336B004F7DCA /* LoginDetails.swift in Sources */,
 				86EA31DE22651088004F7DCA /* RegisterMockService.swift in Sources */,
+				867EDB2722ADA6B900806528 /* TabBarVC.swift in Sources */,
 				86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */,
+				867EDB4722ADC9E000806528 /* AnnouncementsTabVM.swift in Sources */,
+				867EDB4322ADC5C900806528 /* AnnouncementsMockService.swift in Sources */,
 				86EA31DC22650F79004F7DCA /* RegisterService+RegisterError.swift in Sources */,
 				86EA31D022650AD6004F7DCA /* RegisterCoordinator.swift in Sources */,
 				86EA31DA22650E1D004F7DCA /* RegisterHttpRemoteService.swift in Sources */,
 				86EA31C6225B8ADF004F7DCA /* ServiceFactory.swift in Sources */,
 				86EA31B8225B3013004F7DCA /* ServiceProvider.swift in Sources */,
+				867EDB3422ADBA7600806528 /* NibView.swift in Sources */,
 				86ABD75D225A78E200D0EBE8 /* RegisterVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

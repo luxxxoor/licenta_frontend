@@ -12,13 +12,14 @@ class LoginCoordinator: Coordinator {
     private let presenter: UINavigationController
     private let serviceProvider: ServiceProvider
     private let registerCoordinator: RegisterCoordinator
+    private let tabBarCoordinator: TabBarCoordinator
     private let loginVC: LoginVC
-    
     
     init(presenter: UINavigationController, serviceProvider: ServiceProvider) {
         self.presenter = presenter
         self.serviceProvider = serviceProvider
         self.registerCoordinator = RegisterCoordinator(presenter: presenter, serviceProvider: serviceProvider)
+        self.tabBarCoordinator = TabBarCoordinator(presenter: presenter, serviceProvider: serviceProvider)
         self.loginVC = LoginVC.instantiate()
         
         self.loginVC.delegate = self
@@ -32,19 +33,19 @@ class LoginCoordinator: Coordinator {
 extension LoginCoordinator: LoginVCDelegate {
     func loginViewController(_ loginVC: LoginVC, didTapLogin details: LoginDetails) {
         serviceProvider.loginService.login(details: details) {
-            [unowned self] error in
+            [weak self] error in
+            guard let self = self else { return }
             
             if let error = error {
                 self.loginVC.showError(error)
                 return
             }
-            print("connected")
+            
+            self.tabBarCoordinator.start()
         }
     }
     
     func loginViewControllerDidTapRegister(_ loginVC: LoginVC) {
         registerCoordinator.start()
     }
-    
-    
 }

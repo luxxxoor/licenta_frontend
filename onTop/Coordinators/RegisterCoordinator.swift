@@ -18,7 +18,7 @@ class RegisterCoordinator: Coordinator {
         self.presenter = presenter
         self.serviceProvider = serviceProvider
         self.registerVC = RegisterVC.instantiate()
-        self.registerDetails = RegisterDetails()
+        self.registerDetails = RegisterDetails(nickName: nil, password: nil, repassword: nil, email: nil)
         
         self.registerVC.delegate = self
     }
@@ -38,7 +38,6 @@ extension RegisterCoordinator: RegisterVCDelegate {
                     registerVC.resetPasswordFields()
                 }
                 registerVC.showError(error)
-                return
             } else {
                 self?.presenter.popViewController(animated: true)
             }
@@ -50,49 +49,47 @@ extension RegisterCoordinator: RegisterVCDelegate {
     }
     
     func registerViewController(_ registerVC: RegisterVC, didEditAccountName accountName: String) {
-        registerDetails.nickName = accountName
+        registerDetails = RegisterDetails(nickName: accountName, password: registerDetails.password, repassword: registerDetails.repassword, email: registerDetails.email)
         
         serviceProvider.registerService.isAccountNameAvailable(details: registerDetails) {
             [weak self] result in
+            guard let self = self else { return }
             
             switch result {
             case let .success(availability):
                 if availability == true {
-                    self?.registerVC.accountNameErrorLabel.isHidden = true
+                    self.registerVC.accountNameErrorLabel.isHidden = true
                 } else {
-                    self?.registerVC.accountNameErrorLabel.text = Constants.accountNameAlreadyInUser
-                    self?.registerVC.accountNameErrorLabel.isHidden = false
+                    self.registerVC.accountNameErrorLabel.text = Constants.accountNameAlreadyInUser
+                    self.registerVC.accountNameErrorLabel.isHidden = false
                 }
             case let .failure(error):
                 if let error = error as? RegisterService.RegisterError, error == .userNameTooShort {
-                    self?.registerVC.accountNameErrorLabel.text = Constants.userNameTooShortMessage
-                    self?.registerVC.accountNameErrorLabel.isHidden = false
+                    self.registerVC.accountNameErrorLabel.text = Constants.userNameTooShortMessage
+                    self.registerVC.accountNameErrorLabel.isHidden = false
                 }
             }
         }
     }
     
     func registerViewController(_ registerVC: RegisterVC, didEditPassword password: String) {
-        registerDetails.password = password
+        registerDetails = RegisterDetails(nickName: registerDetails.nickName, password: password, repassword: registerDetails.repassword, email: registerDetails.email)
         
         checkPassowrds()
     }
     
     func registerViewController(_ registerVC: RegisterVC, didEditRepassowrd repassword: String) {
-        registerDetails.repassword = repassword
+        registerDetails = RegisterDetails(nickName: registerDetails.nickName, password: registerDetails.password, repassword: repassword, email: registerDetails.email)
         
         checkPassowrds()
     }
     
     private func checkPassowrds() {
         serviceProvider.registerService.checkPasswords(details: registerDetails) {
-            passwordStatus in
+            [weak self] passwordStatus in
+            guard let self = self else { return }
             
-            if passwordStatus == .notMatching {
-                registerVC.passwordErrorLabel.isHidden = false
-            } else {
-                registerVC.passwordErrorLabel.isHidden = true
-            }
+            self.registerVC.passwordErrorLabel.isHidden = passwordStatus == .notMatching ? false : true
         }
     }
 }

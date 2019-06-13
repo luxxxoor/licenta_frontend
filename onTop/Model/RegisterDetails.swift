@@ -9,8 +9,8 @@
 import Foundation
 
 struct RegisterDetails: Encodable {
-    var nickName: String = ""
-    var password: String = ""
-    var repassword: String = ""
-    var email: String = ""
+    let nickName: String?
+    let password: String?
+    let repassword: String?
+    let email: String?
 }

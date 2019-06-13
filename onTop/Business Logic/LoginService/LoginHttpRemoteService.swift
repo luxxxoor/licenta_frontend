@@ -11,7 +11,6 @@ import Alamofire
 
 class LoginHttpRemotService: LoginRemoteService {
     func login(details: LoginDetails, completion: @escaping LoginRemoteService.LoginCompletion) {
-        
         let url = String(format: Constants.loginUrl)
         guard let serviceUrl = URL(string: url) else { return }
         let parameterDictionary = ["username" : details.userName, "password" : details.password]
@@ -42,27 +41,6 @@ class LoginHttpRemotService: LoginRemoteService {
                 DispatchQueue.main.async { completion(error) }
             }
         }.resume()
-        
-        
-        /*let headers: HTTPHeaders = [
-            "Content-Type": "application/json"
-        ]
-        
-        AF.request(Constants.loginUrl, method: .post, parameters: details, encoder: URLEncoding.httpBody, headers: headers).responseJSON {
-            response in
-            
-            guard let statusCode = response.response?.statusCode else { print("escaping without status code #1"); return }
-            
-            if statusCode == 200 {
-                completion(nil)
-            } else if statusCode == 401 {
-                completion(LoginService.LoginError.unauthorized)
-            } else {
-                print(statusCode)
-                completion(LoginService.LoginError.serverError)
-            }
-            
-        }*/
     }
 }
 

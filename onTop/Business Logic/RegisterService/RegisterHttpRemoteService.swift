@@ -31,7 +31,6 @@ class RegisterHttpRemotService: RegisterRemoteService {
             
             guard let httpResponse = response as? HTTPURLResponse else { fatalError() }
             
-            
             if httpResponse.statusCode == 200 {
                 DispatchQueue.main.async { completion(nil) }
             } else {
@@ -61,10 +60,14 @@ class RegisterHttpRemotService: RegisterRemoteService {
     }
     
     func isAccountNameAvailable(details: RegisterDetails, completion: @escaping IsAccountNameAvailableCompletion) {
-        let url = String(format: Constants.checkAccountNameUrl.replacingOccurrences(of: "<nickName>", with: details.nickName))
+        guard let nickName = details.nickName else { return }
+        
+        let url = String(format: Constants.checkAccountNameUrl.replacingOccurrences(of: "<nickName>", with: nickName))
+        
         guard let urlEncoded = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed),
             let serviceUrl = URL(string: urlEncoded)
             else { return }
+        
         var request = URLRequest(url: serviceUrl)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -95,8 +98,8 @@ class RegisterHttpRemotService: RegisterRemoteService {
 
 extension RegisterHttpRemotService {
     enum Constants {
-        static let registerUrl = "http://localhost:8601/registration/v1/register/"
-        static let checkAccountNameUrl = "http://localhost:8601/user/v1/name-availability?nickName=<nickName>"
+        static let registerUrl = "http://localhost:8604/user/registration/v1/register/"
+        static let checkAccountNameUrl = "http://localhost:8604/user/management/v1/name-availability?nickName=<nickName>"
         static let passwordTooShortException = "com.licenta.usm.Exceptions.PasswordTooShortException"
         static let alreadyExistingUserException = "com.licenta.usm.Exceptions.AlreadyExistingUserException"
     }

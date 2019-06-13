@@ -6,6 +6,6 @@ target 'onTop' do
   use_frameworks!
 
   # Pods for onTop
-  pod 'Alamofire', '~> 4.8.2'
+  pod 'Alamofire', '~> 5.0.0-beta.5'
 
 end

@@ -11,4 +11,5 @@ import Foundation
 final class ServiceFactory: ServiceProvider {
     let loginService = LoginService(remote: LoginHttpRemotService())
     let registerService = RegisterService(remote: RegisterHttpRemotService())
+    let announcementsService = AnnouncementsService(remote: AnnouncementsRealService())
 }

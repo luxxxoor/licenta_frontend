@@ -13,7 +13,7 @@ protocol LoginVCDelegate: AnyObject {
     func loginViewControllerDidTapRegister(_ loginVC: LoginVC)
 }
 
-class LoginVC: UIViewController {
+class LoginVC: UIViewController, StoryboardViewController {
     @IBOutlet private weak var accountNameField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
     weak var delegate: LoginVCDelegate?
@@ -29,6 +29,3 @@ class LoginVC: UIViewController {
         delegate?.loginViewControllerDidTapRegister(self)
     }
 }
-
-extension LoginVC: StoryboardViewController {
-} 
