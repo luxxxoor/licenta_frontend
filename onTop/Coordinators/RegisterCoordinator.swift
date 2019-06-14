@@ -49,6 +49,11 @@ extension RegisterCoordinator: RegisterVCDelegate {
     }
     
     func registerViewController(_ registerVC: RegisterVC, didEditAccountName accountName: String) {
+        guard !accountName.isEmpty else {
+            self.registerVC.accountNameErrorLabel.isHidden = true
+            return
+        }
+        
         registerDetails = RegisterDetails(nickName: accountName, password: registerDetails.password, repassword: registerDetails.repassword, email: registerDetails.email)
         
         serviceProvider.registerService.isAccountNameAvailable(details: registerDetails) {
@@ -64,7 +69,8 @@ extension RegisterCoordinator: RegisterVCDelegate {
                     self.registerVC.accountNameErrorLabel.isHidden = false
                 }
             case let .failure(error):
-                if let error = error as? RegisterService.RegisterError, error == .userNameTooShort {
+                if let error = error as? RegisterService.RegisterError,
+                    case .userNameTooShort = error {
                     self.registerVC.accountNameErrorLabel.text = Constants.userNameTooShortMessage
                     self.registerVC.accountNameErrorLabel.isHidden = false
                 }

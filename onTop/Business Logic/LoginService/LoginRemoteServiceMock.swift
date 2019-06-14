@@ -1,5 +1,5 @@
 //
-//  LoginMockService.swift
+//  LoginRemoteServiceMock.swift
 //  onTop
 //
 //  Created by Alexandru Vrincean on 08/04/2019.
@@ -8,10 +8,10 @@
 
 import Foundation
 
-class LoginMockService : LoginRemoteService {
+class LoginRemoteServiceMock : LoginRemoteService {
     let users: [LoginDetails] = [LoginDetails(userName: "testuser", password: "password")]
     
-    func login(details: LoginDetails, completion: @escaping LoginMockService.LoginCompletion) {
+    func login(details: LoginDetails, completion: @escaping LoginRemoteServiceMock.LoginCompletion) {
         users.forEach {
             if $0.userName == details.userName && $0.password == details.password {
                 completion(nil)

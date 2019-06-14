@@ -1,5 +1,5 @@
 //
-//  RegisterMockService.swift
+//  RegisterRemoteServiceMock.swift
 //  onTop
 //
 //  Created by Alexandru Vrincean on 15/04/2019.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-class RegisterMockService : RegisterRemoteService {
-    func register(details: RegisterDetails, completion: @escaping RegisterMockService.RegisterCompletion) {
+class RegisterRemoteServiceMock : RegisterRemoteService {
+    func register(details: RegisterDetails, completion: @escaping RegisterRemoteServiceMock.RegisterCompletion) {
         completion(nil)
     }
     

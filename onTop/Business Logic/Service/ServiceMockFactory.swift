@@ -9,7 +9,7 @@
 import Foundation
 
 final class ServiceMockFactory: ServiceProvider {
-    let loginService = LoginService(remote: LoginMockService())
-    let registerService = RegisterService(remote: RegisterMockService())
-    let announcementsService = AnnouncementsService(remote: AnnouncementsMockService())
+    let loginService = LoginService(remote: LoginRemoteServiceMock())
+    let registerService = RegisterService(remote: RegisterRemoteServiceMock())
+    let announcementsService = AnnouncementsService(remote: AnnouncementsRemoteServiceMock())
 }

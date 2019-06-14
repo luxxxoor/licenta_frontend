@@ -9,7 +9,7 @@
 
 import Foundation
 
-class AnnouncementsMockService: AnnouncementsRemoteService {
+class AnnouncementsRemoteServiceMock: AnnouncementsRemoteService {
 
     func getAnnouncements(completion: @escaping GetAnnouncementsCompletion) {
         completion(Result.success([Announcement(organisationName: "Google", title: "Google socheaza !", imageUrl: URL(string: "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"), description: nil, date: "13.06.2019"),

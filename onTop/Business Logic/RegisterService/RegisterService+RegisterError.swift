@@ -12,21 +12,21 @@ extension RegisterService {
     
     enum RegisterError: LocalizedError {
         case serverError
-        case alreadyExistingUserException
+        case alreadyExistingUserException(message: String)
         case passwordsNotMatch
-        case passwordTooShort
+        case passwordTooShort(message: String)
         case userNameTooShort
         
         var errorDescription: String? {
             switch self {
             case .serverError:
                 return "There was a server error. Operation was canceled."
-            case .alreadyExistingUserException:
-                return "An user with your picked nickname already exists."
+            case .alreadyExistingUserException(let message):
+                return message
             case .passwordsNotMatch:
                 return "Provided passwords do not match."
-            case .passwordTooShort:
-                return "Password has to be at least 5 characters long."
+            case .passwordTooShort(let message):
+                return message
             case .userNameTooShort:
                 return "UserName has to be at least 5 characters long."
             }
