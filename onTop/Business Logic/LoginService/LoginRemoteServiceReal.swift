@@ -8,6 +8,7 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class LoginRemoteServiceReal: LoginRemoteService {
     func login(details: LoginDetails, completion: @escaping LoginRemoteService.LoginCompletion) {
@@ -20,6 +21,14 @@ class LoginRemoteServiceReal: LoginRemoteService {
             guard let statusCode = response.response?.statusCode else { return }
             
             if statusCode == 200 {
+                if let result = response.result.value,
+                    let userId = response.response?.allHeaderFields["userId"] as? String {
+                    let authorization = JSON(result)["Authorization"].stringValue
+                    UserDefaults.standard.setValue(authorization, forKey: "Authorization")
+                    UserDefaults.standard.setValue(userId, forKey: "userId")
+                    UserDefaults.standard.synchronize()
+                }
+                
                 DispatchQueue.main.async { completion(nil) }
             } else if statusCode == 401 {
                 let error = LoginService.LoginError.unauthorized

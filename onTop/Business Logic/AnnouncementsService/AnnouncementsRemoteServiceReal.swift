@@ -14,14 +14,19 @@ class AnnouncementsRemoteServiceReal: AnnouncementsRemoteService {
     
     func getAnnouncements(completion: @escaping GetAnnouncementsCompletion) {
         
-        let parameters: Parameters = [
-            "userId": "1"
+        guard let accessToken = UserDefaults.standard.string(forKey: "Authorization"),
+                let userId = UserDefaults.standard.string(forKey: "userId")
+        else { return }
+        
+        let headers = [
+            "Authorization" : accessToken,
+            "userId" : userId
         ]
         
-        Alamofire.request(Constants.getAssesmentsUrl, method: .get, parameters: parameters, encoding: URLEncoding.queryString)
+        Alamofire.request(Constants.getAssesmentsUrl, method: .get, parameters: nil, encoding: URLEncoding.queryString, headers: headers)
             .responseJSON {
                 response in
-                
+                                
                 if let result = response.result.value {
                     
                     let jsonArray = JSON(result).arrayValue

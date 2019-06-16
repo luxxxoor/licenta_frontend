@@ -11,7 +11,13 @@ import UIKit
 class AnnouncementsTabVC: UIViewController, StoryboardViewController {
     
     @IBOutlet private  weak var tableView: UITableView!
-    var announcementsTabVM: AnnouncementsTabVM?
+    var announcementsTabVM: AnnouncementsTabVM? {
+        didSet {
+            if isViewLoaded {
+                tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

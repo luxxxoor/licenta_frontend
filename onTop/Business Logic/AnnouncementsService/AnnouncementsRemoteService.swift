@@ -15,5 +15,5 @@ protocol AnnouncementsRemoteService {
 }
 
 struct AnnouncementsRemoteServiceConstants {
-    static let address = "http://localhost:8606"
+    static let address = "http://localhost:8604"
 }

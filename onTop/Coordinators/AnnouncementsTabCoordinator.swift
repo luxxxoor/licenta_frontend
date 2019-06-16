@@ -22,11 +22,11 @@ class AnnouncementsTabCoordinator: Coordinator {
         
         let icon = UITabBarItem(title: "News", image: nil, selectedImage: nil)
         self.announcementsTabVC.tabBarItem = icon
-        
-        setupVM(for: announcementsTabVC)
     }
     
     func start() {
+        setupVM(for: announcementsTabVC)
+        
         if var vcs = presenter.viewControllers {
             vcs.append(announcementsTabVC)
             presenter.setViewControllers(vcs, animated: false)
