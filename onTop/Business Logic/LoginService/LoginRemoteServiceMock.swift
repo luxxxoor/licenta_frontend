@@ -12,13 +12,10 @@ class LoginRemoteServiceMock : LoginRemoteService {
     let users: [LoginDetails] = [LoginDetails(userName: "testuser", password: "password")]
     
     func login(details: LoginDetails, completion: @escaping LoginRemoteServiceMock.LoginCompletion) {
-        users.forEach {
-            if $0.userName == details.userName && $0.password == details.password {
-                completion(nil)
-                return
-            }
+        if users.firstIndex(where: { $0.userName == details.userName && $0.password == details.password }) != nil {
+            completion(nil)
+        } else {
+            completion(LoginService.LoginError.unauthorized)
         }
-        
-        completion(LoginService.LoginError.unauthorized)
     }
 }

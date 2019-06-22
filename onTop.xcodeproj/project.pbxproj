@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,7 +16,7 @@
 		867EDB3122ADBA0C00806528 /* AnnouncementHeadline.xib in Resources */ = {isa = PBXBuildFile; fileRef = 867EDB3022ADBA0C00806528 /* AnnouncementHeadline.xib */; };
 		867EDB3422ADBA7600806528 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3322ADBA7600806528 /* NibView.swift */; };
 		867EDB3622ADBAA900806528 /* IBView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3522ADBAA900806528 /* IBView.swift */; };
-		867EDB3922ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3822ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift */; };
+		867EDB3922ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3822ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift */; };
 		867EDB3D22ADC40700806528 /* AnnouncementsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3C22ADC40700806528 /* AnnouncementsService.swift */; };
 		867EDB3F22ADC57300806528 /* AnnouncementsRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB3E22ADC57300806528 /* AnnouncementsRemoteService.swift */; };
 		867EDB4122ADC5BA00806528 /* AnnouncementsRemoteServiceReal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB4022ADC5BA00806528 /* AnnouncementsRemoteServiceReal.swift */; };
@@ -54,6 +54,7 @@
 		86EA31DA22650E1D004F7DCA /* RegisterHttpRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31D922650E1D004F7DCA /* RegisterHttpRemoteService.swift */; };
 		86EA31DC22650F79004F7DCA /* RegisterService+RegisterError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31DB22650F79004F7DCA /* RegisterService+RegisterError.swift */; };
 		86EA31DE22651088004F7DCA /* RegisterRemoteServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EA31DD22651088004F7DCA /* RegisterRemoteServiceMock.swift */; };
+		86EE68BD22BC3E3000769B26 /* UltravisualLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86EE68BC22BC3E3000769B26 /* UltravisualLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +68,7 @@
 		867EDB3022ADBA0C00806528 /* AnnouncementHeadline.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementHeadline.xib; sourceTree = "<group>"; };
 		867EDB3322ADBA7600806528 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		867EDB3522ADBAA900806528 /* IBView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBView.swift; sourceTree = "<group>"; };
-		867EDB3822ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementHeadlineTableViewCell.swift; sourceTree = "<group>"; };
+		867EDB3822ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementHeadlineCollectionViewCell.swift; sourceTree = "<group>"; };
 		867EDB3C22ADC40700806528 /* AnnouncementsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsService.swift; sourceTree = "<group>"; };
 		867EDB3E22ADC57300806528 /* AnnouncementsRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsRemoteService.swift; sourceTree = "<group>"; };
 		867EDB4022ADC5BA00806528 /* AnnouncementsRemoteServiceReal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsRemoteServiceReal.swift; sourceTree = "<group>"; };
@@ -107,6 +108,7 @@
 		86EA31D922650E1D004F7DCA /* RegisterHttpRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterHttpRemoteService.swift; sourceTree = "<group>"; };
 		86EA31DB22650F79004F7DCA /* RegisterService+RegisterError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RegisterService+RegisterError.swift"; sourceTree = "<group>"; };
 		86EA31DD22651088004F7DCA /* RegisterRemoteServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRemoteServiceMock.swift; sourceTree = "<group>"; };
+		86EE68BC22BC3E3000769B26 /* UltravisualLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UltravisualLayout.swift; sourceTree = "<group>"; };
 		D8D9F997ABB922F3B79BD0A4 /* Pods-onTop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-onTop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-onTop/Pods-onTop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +144,7 @@
 		867EDB2D22ADB90700806528 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				86EE68BB22BC3D4900769B26 /* CollectionViewLayout */,
 				867EDB3222ADBA5100806528 /* NibViewBase */,
 				867EDB3722ADC26100806528 /* NewsHeadline */,
 			);
@@ -162,7 +165,7 @@
 			children = (
 				867EDB2E22ADB9F000806528 /* AnnouncementHeadline.swift */,
 				867EDB3022ADBA0C00806528 /* AnnouncementHeadline.xib */,
-				867EDB3822ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift */,
+				867EDB3822ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift */,
 			);
 			path = NewsHeadline;
 			sourceTree = "<group>";
@@ -331,6 +334,14 @@
 			path = RegisterService;
 			sourceTree = "<group>";
 		};
+		86EE68BB22BC3D4900769B26 /* CollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				86EE68BC22BC3E3000769B26 /* UltravisualLayout.swift */,
+			);
+			path = CollectionViewLayout;
+			sourceTree = "<group>";
+		};
 		F188489B43FF038B52295623 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,22 +448,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-onTop/Pods-onTop-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-onTop/Pods-onTop-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-onTop/Pods-onTop-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-onTop/Pods-onTop-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-onTop/Pods-onTop-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -470,10 +474,11 @@
 				867EDB4522ADC62200806528 /* Announcement.swift in Sources */,
 				867EDB2C22ADAFC200806528 /* AnnouncementsTabVC.swift in Sources */,
 				86ABD759225A72CC00D0EBE8 /* UIColor+Hex.swift in Sources */,
+				86EE68BD22BC3E3000769B26 /* UltravisualLayout.swift in Sources */,
 				86ABD756225A5EB400D0EBE8 /* LoginVC.swift in Sources */,
 				867EDB3F22ADC57300806528 /* AnnouncementsRemoteService.swift in Sources */,
 				867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */,
-				867EDB3922ADC28500806528 /* AnnouncementHeadlineTableViewCell.swift in Sources */,
+				867EDB3922ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift in Sources */,
 				86EA31BD225B3091004F7DCA /* LoginRemoteService.swift in Sources */,
 				867EDB2922ADAB0F00806528 /* AnnouncementsTabCoordinator.swift in Sources */,
 				86EA31CA225B8B39004F7DCA /* ServiceMockFactory.swift in Sources */,

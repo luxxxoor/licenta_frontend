@@ -284,47 +284,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Zd8-If-BJN">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ULr-Ni-FU2">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="announcementsCell" id="02g-0c-Fuw" customClass="AnnouncementHeadlineTableViewCell" customModule="onTop" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="02g-0c-Fuw" id="H3s-n7-9F0">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                <collectionViewLayout key="collectionViewLayout" id="gu6-mt-0xR" customClass="UltravisualLayout" customModule="onTop" customModuleProvider="target"/>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="announcementsCell" id="k5p-zH-pz5" customClass="AnnouncementHeadlineCollectionViewCell" customModule="onTop" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ss0-qC-dyw" customClass="AnnouncementHeadline" customModule="onTop" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fD-QK-0tO" customClass="AnnouncementHeadline" customModule="onTop" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="200" height="400"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="400" id="oMb-ZV-zZY"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="Ss0-qC-dyw" secondAttribute="bottom" id="4bo-St-EhR"/>
-                                                <constraint firstItem="Ss0-qC-dyw" firstAttribute="top" secondItem="H3s-n7-9F0" secondAttribute="top" id="aHh-uL-zvN"/>
-                                                <constraint firstItem="Ss0-qC-dyw" firstAttribute="leading" secondItem="H3s-n7-9F0" secondAttribute="leading" id="nmw-e3-dAk"/>
-                                                <constraint firstAttribute="trailing" secondItem="Ss0-qC-dyw" secondAttribute="trailing" id="pea-1k-b8q"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="6fD-QK-0tO" firstAttribute="leading" secondItem="k5p-zH-pz5" secondAttribute="leading" id="9CB-u3-yVv"/>
+                                            <constraint firstAttribute="trailing" secondItem="6fD-QK-0tO" secondAttribute="trailing" id="h9A-bS-Fwd"/>
+                                            <constraint firstItem="6fD-QK-0tO" firstAttribute="top" secondItem="k5p-zH-pz5" secondAttribute="top" id="mBQ-UK-9GB"/>
+                                        </constraints>
+                                        <size key="customSize" width="200" height="200"/>
                                         <connections>
-                                            <outlet property="announcementHeadlineView" destination="Ss0-qC-dyw" id="edo-3s-K3m"/>
+                                            <outlet property="announcementHeadlineView" destination="6fD-QK-0tO" id="xHS-VP-up6"/>
                                         </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Zd8-If-BJN" firstAttribute="leading" secondItem="Ijn-l6-abV" secondAttribute="leading" id="G59-97-8kL"/>
-                            <constraint firstItem="Ijn-l6-abV" firstAttribute="bottom" secondItem="Zd8-If-BJN" secondAttribute="bottom" id="SiT-lm-QVd"/>
-                            <constraint firstItem="Ijn-l6-abV" firstAttribute="trailing" secondItem="Zd8-If-BJN" secondAttribute="trailing" id="TYR-ex-ydP"/>
-                            <constraint firstItem="Zd8-If-BJN" firstAttribute="top" secondItem="Ijn-l6-abV" secondAttribute="top" id="dhn-0b-dBN"/>
+                            <constraint firstItem="Ijn-l6-abV" firstAttribute="bottom" secondItem="ULr-Ni-FU2" secondAttribute="bottom" id="OmJ-Z5-WvC"/>
+                            <constraint firstItem="Ijn-l6-abV" firstAttribute="trailing" secondItem="ULr-Ni-FU2" secondAttribute="trailing" id="byQ-3h-9rm"/>
+                            <constraint firstItem="ULr-Ni-FU2" firstAttribute="top" secondItem="Ijn-l6-abV" secondAttribute="top" id="wsc-fY-iaO"/>
+                            <constraint firstItem="ULr-Ni-FU2" firstAttribute="leading" secondItem="Ijn-l6-abV" secondAttribute="leading" id="xQi-iq-egT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ijn-l6-abV"/>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="Zd8-If-BJN" id="vhd-0P-Ww4"/>
+                        <outlet property="collectionView" destination="ULr-Ni-FU2" id="FZz-Gb-2bF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BE1-V8-Oo4" userLabel="First Responder" sceneMemberID="firstResponder"/>

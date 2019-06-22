@@ -26,7 +26,7 @@ class AnnouncementsRemoteServiceReal: AnnouncementsRemoteService {
         Alamofire.request(Constants.getAssesmentsUrl, method: .get, parameters: nil, encoding: URLEncoding.queryString, headers: headers)
             .responseJSON {
                 response in
-                                
+                
                 if let result = response.result.value {
                     
                     let jsonArray = JSON(result).arrayValue

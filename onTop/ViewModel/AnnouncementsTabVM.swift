@@ -15,16 +15,18 @@ class AnnouncementsTabVM {
         self.announcements = announcements
     }
     
-    func configureCell(_ cell: AnnouncementHeadlineTableViewCell, at indexPath: IndexPath) {
+    func configureCell(_ cell: AnnouncementHeadlineCollectionViewCell, at indexPath: IndexPath) {
         let announcement = announcements[indexPath.row]
         cell.announcementOrganisationName = announcement.organisationName
         cell.announcementTitle = announcement.title
         cell.announcementDescription = announcement.description
         cell.announcementDate = announcement.date
         
-        /*if indexPath.row % 2 == 1 {
-            cell.contentView.tintColor = .lightGray
-        }*/
+        if indexPath.row % 2 == 0 {
+            cell.viewBackgroundColor = UIColor.CustomColors.lightGray
+        } else {
+            cell.viewBackgroundColor = .lightGray
+        }
         
         if let imageUrl = announcement.imageUrl {
             DispatchQueue.global().async {

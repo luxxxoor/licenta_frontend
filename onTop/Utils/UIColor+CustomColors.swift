@@ -11,6 +11,7 @@ import UIKit
 extension UIColor {
     struct CustomColors {
         static let systemBlue = UIColor(hex: 0x007AFF)
+        static let lightGray = UIColor(hex: 0xD3D3D3)
     }
 }
 

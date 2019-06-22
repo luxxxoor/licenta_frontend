@@ -19,6 +19,13 @@ class AnnouncementHeadline: IBView {
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var stackView: UIStackView!
     
+    override var backgroundColor: UIColor? {
+        didSet {
+            headerView?.backgroundColor = backgroundColor
+            rootView?.backgroundColor = backgroundColor
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -31,6 +38,8 @@ class AnnouncementHeadline: IBView {
         super.draw(rect)
         
         headerView.roundCorners([.topLeft, .topRight], radius: Constants.viewRadius)
+        rootView?.roundCorners([.topLeft, .topRight], radius: Constants.viewRadius)
+        roundCorners([.topLeft, .topRight], radius: Constants.viewRadius)
     }
 }
 

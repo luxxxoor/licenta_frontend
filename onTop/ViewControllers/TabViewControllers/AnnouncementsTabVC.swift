@@ -10,11 +10,12 @@ import UIKit
 
 class AnnouncementsTabVC: UIViewController, StoryboardViewController {
     
-    @IBOutlet private  weak var tableView: UITableView!
+    @IBOutlet private weak var collectionView: UICollectionView!
+    
     var announcementsTabVM: AnnouncementsTabVM? {
         didSet {
             if isViewLoaded {
-                tableView.reloadData()
+                collectionView.reloadData()
             }
         }
     }
@@ -22,28 +23,25 @@ class AnnouncementsTabVC: UIViewController, StoryboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.dataSource = self
-        tableView.delegate = self
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.decelerationRate = .fast
     }
 }
 
-extension AnnouncementsTabVC: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension AnnouncementsTabVC: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return announcementsTabVM?.announcements.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.itemCellIdentifier, for: indexPath)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.itemCellIdentifier, for: indexPath)
         
-        if let cell = cell as? AnnouncementHeadlineTableViewCell {
+        if let cell = cell as? AnnouncementHeadlineCollectionViewCell {
             announcementsTabVM?.configureCell(cell, at: indexPath)
         }
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return Constants.tableViewCellHeight;
     }
 }
 

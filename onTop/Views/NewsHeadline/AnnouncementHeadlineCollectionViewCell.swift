@@ -1,5 +1,5 @@
 //
-//  AnnouncementHeadlineTableViewCell.swift
+//  AnnouncementHeadlineCollectionViewCell.swift
 //  onTop
 //
 //  Created by Alexandru Vrincean on 10/06/2019.
@@ -8,8 +8,14 @@
 
 import UIKit
 
-class AnnouncementHeadlineTableViewCell: UITableViewCell {
-    @IBOutlet private weak var announcementHeadlineView: AnnouncementHeadline!
+class AnnouncementHeadlineCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var announcementHeadlineView: AnnouncementHeadline!
+    
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        
+        announcementHeadlineView.layoutIfNeeded()
+    }
     
     var announcementTitle: String? {
         get {
@@ -55,6 +61,12 @@ class AnnouncementHeadlineTableViewCell: UITableViewCell {
         }
         set {
             announcementHeadlineView.dateLabel.text = newValue
+        }
+    }
+    
+    var viewBackgroundColor: UIColor? {
+        didSet {
+            announcementHeadlineView.backgroundColor = viewBackgroundColor
         }
     }
     

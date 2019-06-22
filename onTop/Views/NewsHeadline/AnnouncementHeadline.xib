@@ -94,6 +94,7 @@
                 <constraint firstItem="4Af-Ox-Q6q" firstAttribute="top" secondItem="SaY-LR-8cT" secondAttribute="bottom" constant="8" symbolic="YES" id="c4j-V7-UEU"/>
                 <constraint firstItem="SaY-LR-8cT" firstAttribute="leading" secondItem="SQm-Og-zjH" secondAttribute="leading" constant="8" id="dAW-go-gQk"/>
                 <constraint firstItem="cqt-wK-7qM" firstAttribute="top" secondItem="r4k-Mz-Uuz" secondAttribute="top" id="j4x-mp-FZr"/>
+                <constraint firstItem="SQm-Og-zjH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SaY-LR-8cT" secondAttribute="trailing" id="q6L-2f-6PW"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="SQm-Og-zjH"/>

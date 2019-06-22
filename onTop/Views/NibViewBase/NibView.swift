@@ -8,13 +8,30 @@
 
 import UIKit
 
+private let nibViewTag = 666013
+
 protocol NibView {
+    /// the view instantiated from nib (will be populated by commonInit)
+    var rootView: UIView? { get }
+    
+    /// the parent view that implements the protocol
+    var parentView: UIView { get }
+    
     var nibName: String { get }
     var bundle: Bundle { get }
     func commonInit()
 }
 
 extension NibView where Self: UIView {
+    var rootView: UIView? {
+        for subview in parentView.subviews {
+            if subview.tag == nibViewTag {
+                return subview
+            }
+        }
+
+        return nil
+    }
     
     var nibName: String {
         return String(describing: type(of: self))
@@ -24,6 +41,7 @@ extension NibView where Self: UIView {
         return Bundle(for: type(of: self))
     }
     
+    
     func commonInit() {
         let nib = UINib(nibName: nibName, bundle: bundle)
         let nibObjects = nib.instantiate(withOwner: self, options: nil)
@@ -32,15 +50,17 @@ extension NibView where Self: UIView {
         }
         
         nibView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(nibView)
+        parentView.addSubview(nibView)
         NSLayoutConstraint.activate(
             [
-                nibView.widthAnchor.constraint(equalTo: widthAnchor),
-                nibView.heightAnchor.constraint(equalTo: heightAnchor),
-                nibView.centerXAnchor.constraint(equalTo: centerXAnchor),
-                nibView.centerYAnchor.constraint(equalTo: centerYAnchor)
+                nibView.widthAnchor.constraint(equalTo: parentView.widthAnchor),
+                nibView.heightAnchor.constraint(equalTo: parentView.heightAnchor),
+                nibView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
+                nibView.centerYAnchor.constraint(equalTo: parentView.centerYAnchor)
             ]
         )
+        
+        nibView.tag = nibViewTag
     }
 }
 
