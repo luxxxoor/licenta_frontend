@@ -17,6 +17,7 @@
                 <outlet property="headerView" destination="cqt-wK-7qM" id="O9n-Ml-o4v"/>
                 <outlet property="imageView" destination="8OI-Bo-yPQ" id="a4b-j6-JvV"/>
                 <outlet property="organisationButton" destination="z55-is-GN2" id="G74-vR-0aD"/>
+                <outlet property="readMoreButton" destination="szm-5K-In3" id="JyW-fT-5zL"/>
                 <outlet property="stackView" destination="4Af-Ox-Q6q" id="ByN-ZH-93D"/>
                 <outlet property="titleLabel" destination="SaY-LR-8cT" id="56N-n0-LZy"/>
             </connections>
@@ -30,7 +31,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;Date&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QQR-Ef-zhb">
-                            <rect key="frame" x="156" y="10" width="57.5" height="20.5"/>
+                            <rect key="frame" x="156" y="10" width="85" height="20.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="85" id="r1w-Dz-PgP"/>
+                            </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                             <nil key="highlightedColor"/>
@@ -39,14 +43,26 @@
                             <rect key="frame" x="20" y="3.5" width="128" height="33"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="&lt;Organisation&gt;"/>
+                            <connections>
+                                <action selector="didTapOnOrganisation:" destination="-1" eventType="touchUpInside" id="Ifn-Vv-u68"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="szm-5K-In3">
+                            <rect key="frame" x="355" y="5" width="49" height="30"/>
+                            <state key="normal" title="Citeste"/>
+                            <connections>
+                                <action selector="didTapReadMore:" destination="-1" eventType="touchUpInside" id="0Nb-jl-LTt"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="QQR-Ef-zhb" firstAttribute="leading" secondItem="z55-is-GN2" secondAttribute="trailing" constant="8" symbolic="YES" id="0UO-af-kH3"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="QQR-Ef-zhb" secondAttribute="trailing" constant="20" symbolic="YES" id="3xX-DH-A2N"/>
+                        <constraint firstItem="szm-5K-In3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QQR-Ef-zhb" secondAttribute="trailing" constant="8" symbolic="YES" id="3xX-DH-A2N"/>
                         <constraint firstItem="z55-is-GN2" firstAttribute="leading" secondItem="cqt-wK-7qM" secondAttribute="leading" constant="20" symbolic="YES" id="60K-Va-yLh"/>
+                        <constraint firstAttribute="trailing" secondItem="szm-5K-In3" secondAttribute="trailing" constant="10" id="G3G-oD-XaL"/>
                         <constraint firstAttribute="height" constant="40" id="YdE-zK-7O1"/>
+                        <constraint firstItem="szm-5K-In3" firstAttribute="centerY" secondItem="cqt-wK-7qM" secondAttribute="centerY" id="fhe-l0-ha4"/>
                         <constraint firstItem="z55-is-GN2" firstAttribute="centerY" secondItem="QQR-Ef-zhb" secondAttribute="centerY" id="oo7-9w-Af3"/>
                         <constraint firstItem="z55-is-GN2" firstAttribute="centerY" secondItem="cqt-wK-7qM" secondAttribute="centerY" id="yie-7e-aDT"/>
                     </constraints>

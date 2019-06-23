@@ -17,6 +17,7 @@ protocol RegisterVCDelegate: AnyObject {
 }
 
 class RegisterVC: UIViewController, StoryboardViewController {
+    @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var accountNameField: UITextField!
     @IBOutlet private weak var accountEmailField: UITextField!
     @IBOutlet private weak var passwordField: UITextField!
@@ -27,6 +28,13 @@ class RegisterVC: UIViewController, StoryboardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        backButton.setImage(#imageLiteral(resourceName: "right_arrow-icon"), for: .normal)
+        backButton.imageView?.contentMode = .scaleAspectFit
+        backButton.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        backButton.titleLabel?.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        backButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     }
     
     @IBAction private func didTapRegister(_ sender: UIButton) {

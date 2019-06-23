@@ -10,6 +10,7 @@ import Foundation
 import SwiftyJSON
 
 struct Announcement {
+    let id: Int
     let organisationName: String
     let title: String
     let imageUrl: URL?
@@ -19,6 +20,7 @@ struct Announcement {
 
 extension Announcement {
     init?(json: JSON) {
+        self.id = json[BackendKeys.id].intValue
         self.organisationName = json[BackendKeys.organisationName].stringValue
         self.title = json[BackendKeys.title].stringValue
         if let imageUrlString = json[BackendKeys.imageUrl].string {
@@ -33,6 +35,7 @@ extension Announcement {
 
 private extension Announcement {
     enum BackendKeys {
+        static let id = "id"
         static let organisationName = "organisationName"
         static let title = "title"
         static let imageUrl = "imageUrl"

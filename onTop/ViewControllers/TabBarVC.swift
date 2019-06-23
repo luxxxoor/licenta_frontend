@@ -9,4 +9,10 @@
 import UIKit
 
 class TabBarVC: UITabBarController, StoryboardViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.tabBar.tintColor = UIColor.CustomColors.systemBlue
+    }
 }

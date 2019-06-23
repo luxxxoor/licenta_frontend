@@ -8,16 +8,21 @@
 
 import UIKit
 
+protocol AnnouncementHeadlineDelegate: AnyObject {
+    func announcementHeadlineDidTapReadMore(_ announcementHeadline: AnnouncementHeadline)
+    func announcementHeadlineDidTapOnOrganisation(_ announcementHeadline: AnnouncementHeadline, organisationName: String)
+}
+
 class AnnouncementHeadline: IBView {
-    
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var organisationButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var imageView: UIImageView?
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var readMoreButton: UIButton!
+    weak var delegate: AnnouncementHeadlineDelegate?
     
     override var backgroundColor: UIColor? {
         didSet {
@@ -30,8 +35,14 @@ class AnnouncementHeadline: IBView {
         super.awakeFromNib()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFit
+        imageView?.clipsToBounds = true
+        imageView?.contentMode = .scaleAspectFit
+        
+        readMoreButton.setImage(#imageLiteral(resourceName: "right_arrow-icon"), for: .normal)
+        readMoreButton.imageView?.contentMode = .scaleAspectFit
+        readMoreButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        readMoreButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+        readMoreButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: -1.0)
     }
     
     override func draw(_ rect: CGRect) {
@@ -40,6 +51,15 @@ class AnnouncementHeadline: IBView {
         headerView.roundCorners([.topLeft, .topRight], radius: Constants.viewRadius)
         rootView?.roundCorners([.topLeft, .topRight], radius: Constants.viewRadius)
         roundCorners([.topLeft, .topRight], radius: Constants.viewRadius)
+    }
+    
+    @IBAction private func didTapReadMore(_ sender: UIButton) {
+        delegate?.announcementHeadlineDidTapReadMore(self)
+    }
+    
+    @IBAction private func didTapOnOrganisation(_ sender: UIButton) {
+        guard let organisation = sender.title(for: .normal) else { return }
+        delegate?.announcementHeadlineDidTapOnOrganisation(self, organisationName: organisation)
     }
 }
 

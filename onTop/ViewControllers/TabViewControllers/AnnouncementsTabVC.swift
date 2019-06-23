@@ -48,6 +48,5 @@ extension AnnouncementsTabVC: UICollectionViewDelegate, UICollectionViewDataSour
 extension AnnouncementsTabVC {
     enum Constants {
         static let itemCellIdentifier = "announcementsCell"
-        static let tableViewCellHeight: CGFloat = 300.0
     }
 }

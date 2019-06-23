@@ -12,4 +12,6 @@ final class ServiceFactory: ServiceProvider {
     let loginService = LoginService(remote: LoginRemoteServiceReal())
     let registerService = RegisterService(remote: RegisterRemoteServiceReal())
     let announcementsService = AnnouncementsService(remote: AnnouncementsRemoteServiceReal())
+    let organisationsService = OrganisationsService(remote: OrganisationsRemoteServiceMock())
+    let commentsService = CommentsService(remote: CommentsRemoteServiceMock())
 }

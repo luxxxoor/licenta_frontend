@@ -37,10 +37,10 @@ class AnnouncementHeadlineCollectionViewCell: UICollectionViewCell {
     
     var announcementImage: UIImage? {
         get {
-            return announcementHeadlineView.imageView.image
+            return announcementHeadlineView.imageView?.image
         }
         set {
-            announcementHeadlineView.imageView.image = newValue
+            announcementHeadlineView.imageView?.image = newValue
         }
     }
     
@@ -73,5 +73,17 @@ class AnnouncementHeadlineCollectionViewCell: UICollectionViewCell {
     func removeImageView() {
         guard let imageView = announcementHeadlineView.imageView else { return }
         imageView.removeFromSuperview()
+    }
+    
+    override var tag: Int {
+        didSet {
+            announcementHeadlineView.tag = tag
+        }
+    }
+    
+    weak var announcementDelegate: AnnouncementHeadlineDelegate? {
+        didSet {
+            announcementHeadlineView.delegate = announcementDelegate
+        }
     }
 }

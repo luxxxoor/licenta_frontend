@@ -10,8 +10,10 @@ import Foundation
 
 protocol AnnouncementsRemoteService {
     typealias GetAnnouncementsCompletion = (Result<[Announcement]>) -> Void
+    typealias GetAnnouncementsForOrganisationCompletion = (Result<([Announcement], Bool)>) -> Void
     
     func getAnnouncements(completion: @escaping GetAnnouncementsCompletion)
+    func getAnnouncements(for organisation: String,completion: @escaping GetAnnouncementsForOrganisationCompletion)
 }
 
 struct AnnouncementsRemoteServiceConstants {

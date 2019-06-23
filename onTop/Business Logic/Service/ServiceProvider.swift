@@ -12,4 +12,6 @@ protocol ServiceProvider {
     var loginService: LoginService { get }
     var registerService: RegisterService { get }
     var announcementsService: AnnouncementsService { get }
+    var organisationsService: OrganisationsService { get }
+    var commentsService: CommentsService { get }
 }

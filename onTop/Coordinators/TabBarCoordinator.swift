@@ -12,27 +12,29 @@ import UIKit
 class TabBarCoordinator: Coordinator {
     private let presenter: UINavigationController
     private let serviceProvider: ServiceProvider
-    private let announcementsTabCoordinator1: AnnouncementsTabCoordinator
-    private let announcementsTabCoordinator2: AnnouncementsTabCoordinator
-    private let announcementsTabCoordinator3: AnnouncementsTabCoordinator
-    private let announcementsTabCoordinator4: AnnouncementsTabCoordinator
+    private let announcementsTabCoordinator: AnnouncementsTabCoordinator
+    private let searchOrganisationTabCoordinator: SearchOrganisationTabCoordinator
+    private let chatOrganisationTabCoordinator: ChatOrganisationTabCoordinator
+    private let settingsTabCoordinator: SettingsTabCoordinator
     private let tabBarVC: TabBarVC
     
     init(presenter: UINavigationController, serviceProvider: ServiceProvider){
         self.presenter = presenter
         self.serviceProvider = serviceProvider
         self.tabBarVC = TabBarVC.instantiate()
-        self.announcementsTabCoordinator1 = AnnouncementsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
-        self.announcementsTabCoordinator2 = AnnouncementsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
-        self.announcementsTabCoordinator3 = AnnouncementsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
-        self.announcementsTabCoordinator4 = AnnouncementsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
+        self.announcementsTabCoordinator = AnnouncementsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
+        self.searchOrganisationTabCoordinator = SearchOrganisationTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
+        self.chatOrganisationTabCoordinator = ChatOrganisationTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
+        self.settingsTabCoordinator = SettingsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
     }
     
     func start() {
-        announcementsTabCoordinator1.start()
-        announcementsTabCoordinator2.start()
-        announcementsTabCoordinator3.start()
-        announcementsTabCoordinator4.start()
+        announcementsTabCoordinator.start()
+        searchOrganisationTabCoordinator.start()
+        chatOrganisationTabCoordinator.start()
+        settingsTabCoordinator.start()
         presenter.pushViewController(tabBarVC, animated: true)
+        #warning("not working, ask mihai")
+        tabBarVC.selectedIndex = 0
     }
 }

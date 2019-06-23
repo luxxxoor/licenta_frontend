@@ -11,6 +11,10 @@ import Alamofire
 import SwiftyJSON
 
 class AnnouncementsRemoteServiceReal: AnnouncementsRemoteService {
+    func getAnnouncements(for organisation: String, completion: @escaping GetAnnouncementsForOrganisationCompletion) {
+        fatalError()
+    }
+    
     
     func getAnnouncements(completion: @escaping GetAnnouncementsCompletion) {
         
