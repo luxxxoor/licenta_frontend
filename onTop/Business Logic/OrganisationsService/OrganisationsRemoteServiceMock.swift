@@ -10,11 +10,15 @@ import Foundation
 
 class OrganisationsRemoteServiceMock: OrganisationsRemoteService {
     
-    private let organisations: [String] = ["Google", "Ziar de Cluj", "Stiri", "Nemaivazut", "waka waka waka waka waka waka waka"]
+    private let organisations: [Organisation] = [Organisation(id: 0, name: "Google", isUserSubscriber: true),
+                                                 Organisation(id: 1, name: "Ziar de Cluj", isUserSubscriber: true),
+                                                 Organisation(id: 2, name: "Stiri", isUserSubscriber: false),
+                                                 Organisation(id: 3, name: "Nemaivazut", isUserSubscriber: false),
+                                                 Organisation(id: 4, name: "waka waka waka waka waka waka waka", isUserSubscriber: false)]
     
-    func getOrganisationName(containing text: String, completion: @escaping getOrganisationsByNameCompletion) {
+    func getOrganisationName(containing text: String, completion: @escaping GetOrganisationsByNameCompletion) {
         
-        let matchedOrganisations = organisations.filter { $0.lowercased().contains(text.lowercased()) }
+        let matchedOrganisations = organisations.filter { $0.name.lowercased().contains(text.lowercased()) }
         completion(Result.success(matchedOrganisations))
     }
 }

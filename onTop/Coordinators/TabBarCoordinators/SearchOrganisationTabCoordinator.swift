@@ -44,10 +44,12 @@ class SearchOrganisationTabCoordinator: Coordinator {
 extension SearchOrganisationTabCoordinator: SearchOrganisationTabVCDelegate {
     func searchOrganisationTabVCDidToggleSubscribe(_ searchOrganisationTabVC: SearchOrganisationTabVC) {
         
-        guard let announcementsTabVM = self.searchOrganisationTabVC.announcementsTabVM else { return }
+        guard let organisationVM = self.searchOrganisationTabVC.organisationVM else { return }
+        let organisation = Organisation(id: organisationVM.organisation.id,
+                                        name: organisationVM.organisation.name,
+                                        isUserSubscriber: !organisationVM.organisation.isUserSubscriber)
         
-        self.searchOrganisationTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: announcementsTabVM.announcements, organisation: announcementsTabVM.organisation, isSubscriber: !announcementsTabVM.isSubscriber!)
-        self.searchOrganisationTabVC.announcementsTabVM?.delegate = self
+        self.searchOrganisationTabVC.organisationVM = OrganisationVM(organisation: organisation)
     }
     
     func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC, didSearchFor text: String) {
@@ -58,25 +60,24 @@ extension SearchOrganisationTabCoordinator: SearchOrganisationTabVCDelegate {
             
             switch result {
             case .success(let organisations):
-                self.searchOrganisationTabVC.organisationsTabVM = OrganisationsTabVM(organisations: organisations)
+                self.searchOrganisationTabVC.organisationsVM = OrganisationsVM(organisations: organisations)
             case .failure(let error):
                 self.searchOrganisationTabVC.showError(error)
             }
-
         }
     }
     
-    func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC, didSelectOrganisation organisation: String) {
-        self.searchOrganisationTabVC.organisationsTabVM = nil
-        serviceProvider.announcementsService.getAnnouncements(for: organisation) {
+    func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC, didSelect organisation: Organisation) {
+        self.searchOrganisationTabVC.organisationsVM = nil
+        serviceProvider.announcementsService.getAnnouncements(for: organisation.name) {
             [weak self] result in
             
             guard let self = self else { return }
             
             switch result {
-            case .success(let announcements, let isSubscribed):
-                let organisation = announcements.first!.organisationName
-                self.searchOrganisationTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: announcements, organisation: organisation, isSubscriber: isSubscribed)
+            case .success(let announcements):
+                self.searchOrganisationTabVC.organisationVM = OrganisationVM(organisation: organisation)
+                self.searchOrganisationTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: announcements)
                 self.searchOrganisationTabVC.announcementsTabVM?.delegate = self
             case .failure(let error):
                 self.searchOrganisationTabVC.showError(error)

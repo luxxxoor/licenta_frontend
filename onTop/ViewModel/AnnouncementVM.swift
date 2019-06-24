@@ -44,4 +44,11 @@ class AnnouncementVM {
         
     }
     
+    func setDateLabel(_ label: UILabel) {
+        label.text = announcement.date
+    }
+    
+    func setOrganisationNameLabel(_ label: UILabel) {
+        label.text = announcement.organisationName
+    }
 }

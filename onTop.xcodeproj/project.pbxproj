@@ -11,7 +11,7 @@
 		865C4EEE22BE854900629F82 /* OrganisationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EED22BE854900629F82 /* OrganisationsService.swift */; };
 		865C4EF022BE858000629F82 /* OrganisationsRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EEF22BE858000629F82 /* OrganisationsRemoteService.swift */; };
 		865C4EF222BE861900629F82 /* OrganisationsRemoteServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EF122BE861900629F82 /* OrganisationsRemoteServiceMock.swift */; };
-		865C4EF422BE89D600629F82 /* OrganisationsTabVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EF322BE89D600629F82 /* OrganisationsTabVM.swift */; };
+		865C4EF422BE89D600629F82 /* OrganisationsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EF322BE89D600629F82 /* OrganisationsVM.swift */; };
 		865C4EF622BF75EB00629F82 /* AnnouncementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EF522BF75EB00629F82 /* AnnouncementVC.swift */; };
 		865C4EF822BF788100629F82 /* AnnouncementCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EF722BF788100629F82 /* AnnouncementCoordinator.swift */; };
 		865C4EFA22BF95D300629F82 /* AnnouncementVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4EF922BF95D300629F82 /* AnnouncementVM.swift */; };
@@ -21,6 +21,13 @@
 		865C4F0622BFB98500629F82 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F0522BFB98500629F82 /* Comment.swift */; };
 		865C4F0822BFBD9900629F82 /* CommentsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F0722BFBD9900629F82 /* CommentsVM.swift */; };
 		865C4F0B22BFBE5E00629F82 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F0A22BFBE5E00629F82 /* CommentTableViewCell.swift */; };
+		865C4F0D22C016BC00629F82 /* FirstLoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F0C22C016BC00629F82 /* FirstLoginCoordinator.swift */; };
+		865C4F0F22C0170100629F82 /* FirstLoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F0E22C0170100629F82 /* FirstLoginVC.swift */; };
+		865C4F1122C01ED900629F82 /* Organisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1022C01ED900629F82 /* Organisation.swift */; };
+		865C4F1422C020A100629F82 /* OrganisationVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1322C020A100629F82 /* OrganisationVM.swift */; };
+		865C4F1622C023EF00629F82 /* SubscribeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1522C023EF00629F82 /* SubscribeTableViewCell.swift */; };
+		865C4F1822C046E500629F82 /* InitiateConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1722C046E500629F82 /* InitiateConversationVC.swift */; };
+		865C4F1A22C0494600629F82 /* InitiateConversationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1922C0494600629F82 /* InitiateConversationCoordinator.swift */; };
 		867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */; };
 		867EDB2722ADA6B900806528 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2622ADA6B900806528 /* TabBarVC.swift */; };
 		867EDB2922ADAB0F00806528 /* AnnouncementsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */; };
@@ -82,7 +89,7 @@
 		865C4EED22BE854900629F82 /* OrganisationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationsService.swift; sourceTree = "<group>"; };
 		865C4EEF22BE858000629F82 /* OrganisationsRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationsRemoteService.swift; sourceTree = "<group>"; };
 		865C4EF122BE861900629F82 /* OrganisationsRemoteServiceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationsRemoteServiceMock.swift; sourceTree = "<group>"; };
-		865C4EF322BE89D600629F82 /* OrganisationsTabVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationsTabVM.swift; sourceTree = "<group>"; };
+		865C4EF322BE89D600629F82 /* OrganisationsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationsVM.swift; sourceTree = "<group>"; };
 		865C4EF522BF75EB00629F82 /* AnnouncementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementVC.swift; sourceTree = "<group>"; };
 		865C4EF722BF788100629F82 /* AnnouncementCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementCoordinator.swift; sourceTree = "<group>"; };
 		865C4EF922BF95D300629F82 /* AnnouncementVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementVM.swift; sourceTree = "<group>"; };
@@ -92,6 +99,13 @@
 		865C4F0522BFB98500629F82 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		865C4F0722BFBD9900629F82 /* CommentsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsVM.swift; sourceTree = "<group>"; };
 		865C4F0A22BFBE5E00629F82 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		865C4F0C22C016BC00629F82 /* FirstLoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginCoordinator.swift; sourceTree = "<group>"; };
+		865C4F0E22C0170100629F82 /* FirstLoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLoginVC.swift; sourceTree = "<group>"; };
+		865C4F1022C01ED900629F82 /* Organisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organisation.swift; sourceTree = "<group>"; };
+		865C4F1322C020A100629F82 /* OrganisationVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganisationVM.swift; sourceTree = "<group>"; };
+		865C4F1522C023EF00629F82 /* SubscribeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeTableViewCell.swift; sourceTree = "<group>"; };
+		865C4F1722C046E500629F82 /* InitiateConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateConversationVC.swift; sourceTree = "<group>"; };
+		865C4F1922C0494600629F82 /* InitiateConversationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateConversationCoordinator.swift; sourceTree = "<group>"; };
 		867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		867EDB2622ADA6B900806528 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTabCoordinator.swift; sourceTree = "<group>"; };
@@ -195,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				865C4F0A22BFBE5E00629F82 /* CommentTableViewCell.swift */,
+				865C4F1522C023EF00629F82 /* SubscribeTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -244,9 +259,10 @@
 			isa = PBXGroup;
 			children = (
 				867EDB4622ADC9E000806528 /* AnnouncementsTabVM.swift */,
-				865C4EF322BE89D600629F82 /* OrganisationsTabVM.swift */,
+				865C4EF322BE89D600629F82 /* OrganisationsVM.swift */,
 				865C4EF922BF95D300629F82 /* AnnouncementVM.swift */,
 				865C4F0722BFBD9900629F82 /* CommentsVM.swift */,
+				865C4F1322C020A100629F82 /* OrganisationVM.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -319,6 +335,8 @@
 				867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */,
 				86EE68C622BE6A4700769B26 /* TabBarCoordinators */,
 				865C4EF722BF788100629F82 /* AnnouncementCoordinator.swift */,
+				865C4F0C22C016BC00629F82 /* FirstLoginCoordinator.swift */,
+				865C4F1922C0494600629F82 /* InitiateConversationCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -332,6 +350,8 @@
 				867EDB2622ADA6B900806528 /* TabBarVC.swift */,
 				867EDB2A22ADAFAA00806528 /* TabViewControllers */,
 				865C4EF522BF75EB00629F82 /* AnnouncementVC.swift */,
+				865C4F0E22C0170100629F82 /* FirstLoginVC.swift */,
+				865C4F1722C046E500629F82 /* InitiateConversationVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -388,6 +408,7 @@
 				86EA31D122650B60004F7DCA /* RegisterDetails.swift */,
 				867EDB4422ADC62200806528 /* Announcement.swift */,
 				865C4F0522BFB98500629F82 /* Comment.swift */,
+				865C4F1022C01ED900629F82 /* Organisation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -557,11 +578,13 @@
 			files = (
 				867EDB3D22ADC40700806528 /* AnnouncementsService.swift in Sources */,
 				86EA31D822650D50004F7DCA /* RegisterRemoteService.swift in Sources */,
-				865C4EF422BE89D600629F82 /* OrganisationsTabVM.swift in Sources */,
+				865C4EF422BE89D600629F82 /* OrganisationsVM.swift in Sources */,
 				865C4EF622BF75EB00629F82 /* AnnouncementVC.swift in Sources */,
 				86EA31C4225B3989004F7DCA /* LoginService+LoginError.swift in Sources */,
 				867EDB3622ADBAA900806528 /* IBView.swift in Sources */,
+				865C4F1A22C0494600629F82 /* InitiateConversationCoordinator.swift in Sources */,
 				86ABD751225A5D4D00D0EBE8 /* AppCoordinator.swift in Sources */,
+				865C4F0F22C0170100629F82 /* FirstLoginVC.swift in Sources */,
 				867EDB4522ADC62200806528 /* Announcement.swift in Sources */,
 				867EDB2C22ADAFC200806528 /* AnnouncementsTabVC.swift in Sources */,
 				86ABD759225A72CC00D0EBE8 /* UIColor+Hex.swift in Sources */,
@@ -573,6 +596,7 @@
 				867EDB3F22ADC57300806528 /* AnnouncementsRemoteService.swift in Sources */,
 				865C4F0222BFB7E200629F82 /* CommentsRemoteService.swift in Sources */,
 				867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */,
+				865C4F1822C046E500629F82 /* InitiateConversationVC.swift in Sources */,
 				867EDB3922ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift in Sources */,
 				86EA31BD225B3091004F7DCA /* LoginRemoteService.swift in Sources */,
 				867EDB2922ADAB0F00806528 /* AnnouncementsTabCoordinator.swift in Sources */,
@@ -598,8 +622,10 @@
 				86EA31BB225B306F004F7DCA /* LoginService.swift in Sources */,
 				86ABD748225A5C8500D0EBE8 /* StoryboardViewController.swift in Sources */,
 				868E4DF02281CBC4002581B7 /* Result.swift in Sources */,
+				865C4F1422C020A100629F82 /* OrganisationVM.swift in Sources */,
 				86EA31C2225B336B004F7DCA /* LoginDetails.swift in Sources */,
 				86EA31DE22651088004F7DCA /* RegisterRemoteServiceMock.swift in Sources */,
+				865C4F0D22C016BC00629F82 /* FirstLoginCoordinator.swift in Sources */,
 				867EDB2722ADA6B900806528 /* TabBarVC.swift in Sources */,
 				86ABD735225A58F800D0EBE8 /* AppDelegate.swift in Sources */,
 				867EDB4722ADC9E000806528 /* AnnouncementsTabVM.swift in Sources */,
@@ -616,7 +642,9 @@
 				865C4EFA22BF95D300629F82 /* AnnouncementVM.swift in Sources */,
 				865C4F0822BFBD9900629F82 /* CommentsVM.swift in Sources */,
 				867EDB3422ADBA7600806528 /* NibView.swift in Sources */,
+				865C4F1622C023EF00629F82 /* SubscribeTableViewCell.swift in Sources */,
 				86ABD75D225A78E200D0EBE8 /* RegisterVC.swift in Sources */,
+				865C4F1122C01ED900629F82 /* Organisation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

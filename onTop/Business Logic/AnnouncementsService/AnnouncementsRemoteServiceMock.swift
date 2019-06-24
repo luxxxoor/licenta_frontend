@@ -24,6 +24,6 @@ class AnnouncementsRemoteServiceMock: AnnouncementsRemoteService {
     
     func getAnnouncements(for organisation: String, completion: @escaping GetAnnouncementsForOrganisationCompletion) {
         let matchedAnnouncements = announcements.filter { $0.organisationName ==  organisation}
-        completion(Result.success((matchedAnnouncements, false)))
+        completion(Result.success((matchedAnnouncements)))
     }
 }

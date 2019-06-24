@@ -14,6 +14,7 @@ class AnnouncementCoordinator: Coordinator {
     private let announcementVC: AnnouncementVC
     private let announcementVM: AnnouncementVM
     private let announcement: Announcement
+    private let initiateConversationCoordinator: InitiateConversationCoordinator
     
     init(presenter: UINavigationController, serviceProvider: ServiceProvider, announcement: Announcement){
         self.presenter = presenter
@@ -21,6 +22,7 @@ class AnnouncementCoordinator: Coordinator {
         self.announcement = announcement
         self.announcementVC = AnnouncementVC.instantiate()
         self.announcementVM = AnnouncementVM(announcement: announcement)
+        self.initiateConversationCoordinator = InitiateConversationCoordinator(presenter: presenter, serviceProvider: serviceProvider, announcement: announcement)
         self.announcementVC.delegate = self
         self.announcementVC.announcementVM = announcementVM
     }
@@ -47,6 +49,10 @@ class AnnouncementCoordinator: Coordinator {
 }
 
 extension AnnouncementCoordinator : AnnouncementVCDelegate {
+    func announcementVCDidTapInitiateConversation(_ announcementVC: AnnouncementVC) {
+        initiateConversationCoordinator.start()
+    }
+    
     func announcementVCDidTapBack(_ announcementVC: AnnouncementVC) {
         presenter.popViewController(animated: true)
     }

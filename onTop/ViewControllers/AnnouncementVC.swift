@@ -10,6 +10,7 @@ import UIKit
 
 protocol AnnouncementVCDelegate : AnyObject {
     func announcementVCDidTapBack(_ announcementVC: AnnouncementVC)
+    func announcementVCDidTapInitiateConversation(_ announcementVC: AnnouncementVC)
 }
 
 class AnnouncementVC : UIViewController, StoryboardViewController {
@@ -25,12 +26,10 @@ class AnnouncementVC : UIViewController, StoryboardViewController {
     @IBOutlet private weak var scrollViewInner: UIView!
     @IBOutlet private weak var scrollViewInnerHeight: NSLayoutConstraint!
     @IBOutlet private weak var announcementStackView: UIStackView!
-    
+    @IBOutlet private weak var startConversationButton: UIButton!
     @IBOutlet private weak var commentsTableViewHeightConstraint: NSLayoutConstraint!
     
-    
     weak var delegate: AnnouncementVCDelegate?
-    
     
     var announcementVM: AnnouncementVM? {
         didSet {
@@ -54,10 +53,14 @@ class AnnouncementVC : UIViewController, StoryboardViewController {
         setupBackButton()
         setupAnnouncement()
         setupComments()
+        setupConversationButton()
         
         #warning("ask mihai #2")
         scrollViewInnerHeight.isActive =  false
         scrollViewInner.heightAnchor.constraint(equalToConstant: announcementStackView.bounds.height)
+    }
+    @IBAction private func didTapInitConversation(_ sender: UIButton) {
+        delegate?.announcementVCDidTapInitiateConversation(self)
     }
     
     @IBAction private func didTapBack(_ sender: UIButton) {
@@ -101,6 +104,19 @@ class AnnouncementVC : UIViewController, StoryboardViewController {
         }
     }
     
+    private func setupConversationButton() {
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Constants.boldFont,
+            .foregroundColor: Constants.titleColor
+        ]
+        
+        let buttonAttributedTitle = NSMutableAttributedString(string: Constants.titleStartConversation, attributes: attributes)
+        
+        startConversationButton.backgroundColor = Constants.backgroundColor
+        startConversationButton.layer.cornerRadius = Constants.cornerRadius
+        startConversationButton.setAttributedTitle(buttonAttributedTitle, for: .normal)
+    }
+    
     private func reloadTableView() {
         commentsTableView.reloadData()
         
@@ -142,5 +158,10 @@ private extension AnnouncementVC {
     enum Constants {
         static let commentCellIdentifier = "commentCell"
         static let textBoxPlaceHolder = "Lasă un comentariu..."
+        static let titleStartConversation = "Începe o conversație."
+        static let boldFont = UIFont.boldSystemFont(ofSize: 17)
+        static let titleColor = UIColor.white
+        static let backgroundColor = UIColor.CustomColors.systemBlue
+        static let cornerRadius:CGFloat = 15
     }
 }

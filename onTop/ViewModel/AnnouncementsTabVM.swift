@@ -14,33 +14,11 @@ protocol AnnouncementsTabVMDelegate: AnyObject {
 }
 
 class AnnouncementsTabVM {
-    let organisation: String?
-    let isSubscriber: Bool?
     let announcements: [Announcement]
     weak var delegate: AnnouncementsTabVMDelegate?
     
-    init(announcements: [Announcement], organisation: String? = nil, isSubscriber: Bool? = nil) {
+    init(announcements: [Announcement]) {
         self.announcements = announcements
-        self.organisation = organisation
-        self.isSubscriber = isSubscriber
-    }
-    
-    func configureSubscribeButton(_ button: UIButton) {
-        guard let isSubscriber = isSubscriber, let organisation = organisation else { return }
-        
-        button.isHidden = false
-        
-        let attributes: [NSAttributedString.Key: Any] = [
-            .font: Constants.boldFont,
-            .foregroundColor: UIColor.white
-        ]
-        
-        let subscribeText = isSubscriber ? "Dezabonează-te de la" : "Abonează-te la"
-        let buttonTitle = "\(subscribeText) \(organisation)"
-        
-        let buttonAttributedTitle = NSMutableAttributedString(string: buttonTitle, attributes: attributes)
-        
-        button.setAttributedTitle(buttonAttributedTitle, for: .normal)
     }
     
     func configureCell(_ cell: AnnouncementHeadlineCollectionViewCell, at indexPath: IndexPath) {
@@ -81,13 +59,6 @@ extension AnnouncementsTabVM: AnnouncementHeadlineDelegate {
     func announcementHeadlineDidTapOnOrganisation(_ announcementHeadline: AnnouncementHeadline, organisationName: String) {
         let organisation = announcements[announcementHeadline.tag].organisationName
         delegate?.announcementsTabVM(self, didSelect: organisation)
-    }
-}
-
-private extension AnnouncementsTabVM {
-    enum Constants {
-        static let boldFont = UIFont.boldSystemFont(ofSize: 17)
-        static let titleColor = UIColor.CustomColors.lightGray
     }
 }
 

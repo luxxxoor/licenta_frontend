@@ -9,9 +9,9 @@
 import Foundation
 
 protocol OrganisationsRemoteService {
-    typealias getOrganisationsByNameCompletion = (Result<[String]>) -> Void
+    typealias GetOrganisationsByNameCompletion = (Result<[Organisation]>) -> Void
     
-    func getOrganisationName(containing text: String, completion: @escaping getOrganisationsByNameCompletion)
+    func getOrganisationName(containing text: String, completion: @escaping GetOrganisationsByNameCompletion)
 }
 
 struct OrganisationsRemoteServiceConstants {

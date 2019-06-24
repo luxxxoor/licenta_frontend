@@ -12,6 +12,7 @@ class LoginCoordinator: Coordinator {
     private let presenter: UINavigationController
     private let serviceProvider: ServiceProvider
     private let registerCoordinator: RegisterCoordinator
+    private let firstLoginCoordinator: FirstLoginCoordinator
     private let tabBarCoordinator: TabBarCoordinator
     private let loginVC: LoginVC
     
@@ -21,6 +22,7 @@ class LoginCoordinator: Coordinator {
         self.registerCoordinator = RegisterCoordinator(presenter: presenter, serviceProvider: serviceProvider)
         self.tabBarCoordinator = TabBarCoordinator(presenter: presenter, serviceProvider: serviceProvider)
         self.loginVC = LoginVC.instantiate()
+        self.firstLoginCoordinator = FirstLoginCoordinator(presenter: presenter, serviceProvider: serviceProvider)
         
         self.loginVC.delegate = self
     }
@@ -41,7 +43,8 @@ extension LoginCoordinator: LoginVCDelegate {
                 return
             }
             
-            self.tabBarCoordinator.start()
+            //self.tabBarCoordinator.start()
+            self.firstLoginCoordinator.start()
         }
     }
     

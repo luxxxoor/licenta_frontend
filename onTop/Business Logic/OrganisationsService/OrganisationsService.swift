@@ -15,7 +15,7 @@ class OrganisationsService {
         self.remote = remote
     }
     
-    func getOrganisationName(containing text: String, completion: @escaping OrganisationsRemoteService.getOrganisationsByNameCompletion) {
+    func getOrganisationName(containing text: String, completion: @escaping OrganisationsRemoteService.GetOrganisationsByNameCompletion) {
         remote.getOrganisationName(containing: text, completion: completion)
     }
 }

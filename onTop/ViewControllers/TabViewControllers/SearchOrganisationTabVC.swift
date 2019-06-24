@@ -12,7 +12,7 @@ protocol SearchOrganisationTabVCDelegate: AnyObject {
     func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC,
                                  didSearchFor text: String)
     func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC,
-                                 didSelectOrganisation organisation: String)
+                                 didSelect organisation: Organisation)
     
     func searchOrganisationTabVCDidToggleSubscribe(_ searchOrganisationTabVC: SearchOrganisationTabVC)
 }
@@ -27,7 +27,7 @@ class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
     
     weak var delegate: SearchOrganisationTabVCDelegate?
     
-    var organisationsTabVM: OrganisationsTabVM? {
+    var organisationsVM: OrganisationsVM? {
         didSet {
             if isViewLoaded {
                 reloadTableView()
@@ -37,8 +37,14 @@ class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
     var announcementsTabVM: AnnouncementsTabVM? {
         didSet {
             if isViewLoaded {
-                announcementsTabVM?.configureSubscribeButton(subscribeButton)
                 collectionView.reloadData()
+            }
+        }
+    }
+    var organisationVM: OrganisationVM? {
+        didSet {
+            if isViewLoaded {
+                organisationVM?.configureSubscribeButton(subscribeButton)
             }
         }
     }
@@ -99,8 +105,8 @@ class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
     private func reloadTableView() {
         tableView.reloadData()
         
-        guard let organisationsTabVM = organisationsTabVM,
-            organisationsTabVM.organisations.count > 0
+        guard let organisationsVM = organisationsVM,
+            organisationsVM.organisations.count > 0
             else {
             tableView.isHidden = true
             return
@@ -143,13 +149,14 @@ extension SearchOrganisationTabVC: UICollectionViewDelegate, UICollectionViewDat
 
 extension SearchOrganisationTabVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return organisationsTabVM?.organisations.count ?? 0
+        return organisationsVM?.organisations.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.organisationCellIdentifier, for: indexPath)
         
-        organisationsTabVM?.configureCell(cell, at: indexPath)
+        organisationsVM?.configureCell(cell, at: indexPath)
+        
         return cell
     }
     
@@ -158,11 +165,11 @@ extension SearchOrganisationTabVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let organisationsTabVM = organisationsTabVM else { return }
+        guard let organisationsVM = organisationsVM else { return }
         
-        let organisation = organisationsTabVM.organisations[indexPath.row]
+        let organisation = organisationsVM.organisations[indexPath.row]
         
-        delegate?.searchOrganisationTabVC(self, didSelectOrganisation: organisation)
+        delegate?.searchOrganisationTabVC(self, didSelect: organisation)
         searchTextField.text = nil
     }
 }
