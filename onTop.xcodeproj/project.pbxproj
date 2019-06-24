@@ -28,6 +28,10 @@
 		865C4F1622C023EF00629F82 /* SubscribeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1522C023EF00629F82 /* SubscribeTableViewCell.swift */; };
 		865C4F1822C046E500629F82 /* InitiateConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1722C046E500629F82 /* InitiateConversationVC.swift */; };
 		865C4F1A22C0494600629F82 /* InitiateConversationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1922C0494600629F82 /* InitiateConversationCoordinator.swift */; };
+		865C4F1C22C0504600629F82 /* ConversationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1B22C0504600629F82 /* ConversationCoordinator.swift */; };
+		865C4F1E22C0515400629F82 /* ConversationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1D22C0515400629F82 /* ConversationVC.swift */; };
+		865C4F2022C054F900629F82 /* MessageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F1F22C054F900629F82 /* MessageTableViewCell.swift */; };
+		865C4F2222C05DB700629F82 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 865C4F2122C05DB700629F82 /* PaddingLabel.swift */; };
 		867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */; };
 		867EDB2722ADA6B900806528 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2622ADA6B900806528 /* TabBarVC.swift */; };
 		867EDB2922ADAB0F00806528 /* AnnouncementsTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */; };
@@ -106,6 +110,10 @@
 		865C4F1522C023EF00629F82 /* SubscribeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeTableViewCell.swift; sourceTree = "<group>"; };
 		865C4F1722C046E500629F82 /* InitiateConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateConversationVC.swift; sourceTree = "<group>"; };
 		865C4F1922C0494600629F82 /* InitiateConversationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitiateConversationCoordinator.swift; sourceTree = "<group>"; };
+		865C4F1B22C0504600629F82 /* ConversationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationCoordinator.swift; sourceTree = "<group>"; };
+		865C4F1D22C0515400629F82 /* ConversationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationVC.swift; sourceTree = "<group>"; };
+		865C4F1F22C054F900629F82 /* MessageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableViewCell.swift; sourceTree = "<group>"; };
+		865C4F2122C05DB700629F82 /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		867EDB2422ADA64E00806528 /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 		867EDB2622ADA6B900806528 /* TabBarVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarVC.swift; sourceTree = "<group>"; };
 		867EDB2822ADAB0F00806528 /* AnnouncementsTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementsTabCoordinator.swift; sourceTree = "<group>"; };
@@ -210,6 +218,7 @@
 			children = (
 				865C4F0A22BFBE5E00629F82 /* CommentTableViewCell.swift */,
 				865C4F1522C023EF00629F82 /* SubscribeTableViewCell.swift */,
+				865C4F1F22C054F900629F82 /* MessageTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -232,6 +241,7 @@
 				86EE68BB22BC3D4900769B26 /* CollectionViewLayout */,
 				867EDB3222ADBA5100806528 /* NibViewBase */,
 				867EDB3722ADC26100806528 /* NewsHeadline */,
+				865C4F2122C05DB700629F82 /* PaddingLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,6 +347,7 @@
 				865C4EF722BF788100629F82 /* AnnouncementCoordinator.swift */,
 				865C4F0C22C016BC00629F82 /* FirstLoginCoordinator.swift */,
 				865C4F1922C0494600629F82 /* InitiateConversationCoordinator.swift */,
+				865C4F1B22C0504600629F82 /* ConversationCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -352,6 +363,7 @@
 				865C4EF522BF75EB00629F82 /* AnnouncementVC.swift */,
 				865C4F0E22C0170100629F82 /* FirstLoginVC.swift */,
 				865C4F1722C046E500629F82 /* InitiateConversationVC.swift */,
+				865C4F1D22C0515400629F82 /* ConversationVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -596,6 +608,7 @@
 				867EDB3F22ADC57300806528 /* AnnouncementsRemoteService.swift in Sources */,
 				865C4F0222BFB7E200629F82 /* CommentsRemoteService.swift in Sources */,
 				867EDB2522ADA64F00806528 /* TabBarCoordinator.swift in Sources */,
+				865C4F2222C05DB700629F82 /* PaddingLabel.swift in Sources */,
 				865C4F1822C046E500629F82 /* InitiateConversationVC.swift in Sources */,
 				867EDB3922ADC28500806528 /* AnnouncementHeadlineCollectionViewCell.swift in Sources */,
 				86EA31BD225B3091004F7DCA /* LoginRemoteService.swift in Sources */,
@@ -605,6 +618,7 @@
 				86EA31D622650CDD004F7DCA /* RegisterService.swift in Sources */,
 				865C4EEE22BE854900629F82 /* OrganisationsService.swift in Sources */,
 				867EDB4122ADC5BA00806528 /* AnnouncementsRemoteServiceReal.swift in Sources */,
+				865C4F2022C054F900629F82 /* MessageTableViewCell.swift in Sources */,
 				86ABD753225A5DEA00D0EBE8 /* LoginCoordinator.swift in Sources */,
 				86EA31D222650B60004F7DCA /* RegisterDetails.swift in Sources */,
 				865C4EF822BF788100629F82 /* AnnouncementCoordinator.swift in Sources */,
@@ -618,6 +632,7 @@
 				865C4F0022BFB7BF00629F82 /* CommentsService.swift in Sources */,
 				86EE68C522BE69D500769B26 /* SettingsTabVC.swift in Sources */,
 				867EDB2F22ADB9F000806528 /* AnnouncementHeadline.swift in Sources */,
+				865C4F1E22C0515400629F82 /* ConversationVC.swift in Sources */,
 				86ABD74F225A5D2700D0EBE8 /* Coordinator.swift in Sources */,
 				86EA31BB225B306F004F7DCA /* LoginService.swift in Sources */,
 				86ABD748225A5C8500D0EBE8 /* StoryboardViewController.swift in Sources */,
@@ -643,6 +658,7 @@
 				865C4F0822BFBD9900629F82 /* CommentsVM.swift in Sources */,
 				867EDB3422ADBA7600806528 /* NibView.swift in Sources */,
 				865C4F1622C023EF00629F82 /* SubscribeTableViewCell.swift in Sources */,
+				865C4F1C22C0504600629F82 /* ConversationCoordinator.swift in Sources */,
 				86ABD75D225A78E200D0EBE8 /* RegisterVC.swift in Sources */,
 				865C4F1122C01ED900629F82 /* Organisation.swift in Sources */,
 			);
