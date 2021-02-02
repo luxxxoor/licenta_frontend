@@ -13,14 +13,13 @@ protocol SearchOrganisationTabVCDelegate: AnyObject {
                                  didSearchFor text: String)
     func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC,
                                  didSelect organisation: Organisation)
-    
+    func searchOrganisationTabVCDidAppear(_ searchOrganisationTabVC: SearchOrganisationTabVC)
     func searchOrganisationTabVCDidToggleSubscribe(_ searchOrganisationTabVC: SearchOrganisationTabVC)
 }
 
 class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var tableSizeConstraint: NSLayoutConstraint!
     @IBOutlet private weak var textFieldWrapper: UIView!
     @IBOutlet private weak var searchTextField: UITextField!
     @IBOutlet private weak var subscribeButton: UIButton!
@@ -51,14 +50,32 @@ class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        tapGesture.cancelsTouchesInView = false
+        view.addGestureRecognizer(tapGesture)
         
         setupTableView()
         setupCollectionView()
         setupSearchTextBox()
         setupSubscribeButton()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        delegate?.searchOrganisationTabVCDidAppear(self)
+    }
+
+    @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+
+    func setSearchedString(_ text: String) {
+        searchTextField?.text = text
+    }
     
-    @IBAction func didWriteText(_ sender: UITextField) {
+    @IBAction private func didWriteText(_ sender: UITextField) {
         guard let text = sender.text, !text.isEmpty else {
             tableView.isHidden = true
             return
@@ -67,10 +84,9 @@ class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
         delegate?.searchOrganisationTabVC(self, didSearchFor: text)
     }
     
-    @IBAction func didToggleSubscribe(_ sender: UIButton) {
+    @IBAction private func didToggleSubscribe(_ sender: UIButton) {
         delegate?.searchOrganisationTabVCDidToggleSubscribe(self)
     }
-    
     
     private func setupTableView() {
         tableView.delegate = self
@@ -111,13 +127,6 @@ class SearchOrganisationTabVC: UIViewController, StoryboardViewController {
             tableView.isHidden = true
             return
         }
-        
-        let size = tableView.visibleCells.map { $0.bounds.height }.reduce(0, +)
-        
-        tableSizeConstraint.isActive = false
-        tableSizeConstraint = tableView.heightAnchor.constraint(equalToConstant: size)
-        tableSizeConstraint.priority = .defaultHigh
-        tableSizeConstraint.isActive = true
         
         tableView.isHidden = false
     }
@@ -171,6 +180,10 @@ extension SearchOrganisationTabVC: UITableViewDelegate, UITableViewDataSource {
         
         delegate?.searchOrganisationTabVC(self, didSelect: organisation)
         searchTextField.text = nil
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
     }
 }
 

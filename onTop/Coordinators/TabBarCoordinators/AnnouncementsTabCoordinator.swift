@@ -7,8 +7,11 @@
 //
 
 import Foundation
-
 import UIKit
+
+protocol AnnouncementsTabCoordinatorDelegate: AnyObject {
+    func announcementsTabCoordinator(_ announcementsTabCoordinator: AnnouncementsTabCoordinator, didSelect organisation: Organisation)
+}
 
 class AnnouncementsTabCoordinator: Coordinator {
     private let presenter: UITabBarController
@@ -16,6 +19,8 @@ class AnnouncementsTabCoordinator: Coordinator {
     private let navigationVC: UINavigationController
     private let announcementsTabVC: AnnouncementsTabVC
     private var announcementCoordinator: AnnouncementCoordinator?
+    weak var delegate: AnnouncementsTabCoordinatorDelegate?
+    weak var initiateDelegate: InitiateConversationCoordinatorDelegate?
     
     init(presenter: UITabBarController, serviceProvider: ServiceProvider){
         self.presenter = presenter
@@ -25,6 +30,7 @@ class AnnouncementsTabCoordinator: Coordinator {
         
         let icon = UITabBarItem(title: nil, image: #imageLiteral(resourceName: "news_feed-icon"), selectedImage: nil)
         self.announcementsTabVC.tabBarItem = icon
+        self.announcementsTabVC.delegate = self
     }
     
     func start() {
@@ -44,14 +50,33 @@ class AnnouncementsTabCoordinator: Coordinator {
     }
     
     private func setupVM(for announcementsTabVC: AnnouncementsTabVC) {
-        serviceProvider.announcementsService.getAnnouncements{
-            result in
+        serviceProvider.announcementsService.getAnnouncements { result in
+            switch result {
+            case .failure(let error):
+                announcementsTabVC.showError(error)
+            case .success(let announcements):
+                let org = self.serviceProvider.subscriptionService.organisations.filter { $0.isUserSubscriber }
+                let goodAnnouncements = announcements.filter { a in org.map { $0.name }.contains(a.organisationName) }
+
+                announcementsTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: goodAnnouncements)
+                announcementsTabVC.announcementsTabVM?.delegate = self
+            }
+        }
+    }
+}
+
+extension AnnouncementsTabCoordinator: AnnouncementsTabVCDelegate {
+    func announcementsTabVCDidRefresh(_ announcementsTabVC: AnnouncementsTabVC) {
+        serviceProvider.announcementsService.getAnnouncements { result in
             
             switch result {
             case .failure(let error):
                 announcementsTabVC.showError(error)
             case .success(let announcements):
-                announcementsTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: announcements)
+                let org = self.serviceProvider.subscriptionService.organisations.filter { $0.isUserSubscriber }
+                let goodAnnouncements = announcements.filter { a in org.map { $0.name }.contains(a.organisationName) }
+
+                announcementsTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: goodAnnouncements)
                 announcementsTabVC.announcementsTabVM?.delegate = self
             }
         }
@@ -61,12 +86,21 @@ class AnnouncementsTabCoordinator: Coordinator {
 extension AnnouncementsTabCoordinator: AnnouncementsTabVMDelegate {
     func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect announcement: Announcement) {
         announcementCoordinator = AnnouncementCoordinator(presenter: navigationVC, serviceProvider: serviceProvider, announcement: announcement)
+        announcementCoordinator?.initiateDelegate = initiateDelegate
         announcementCoordinator?.start()
     }
     
-    func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect organistion: String) {
-        
+    func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect organistionName: String) {
+        serviceProvider.organisationsService.getOrganisation(by: organistionName) {
+            [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let organisation):
+                self.delegate?.announcementsTabCoordinator(self, didSelect: organisation)
+            case .failure(let error):
+                self.announcementsTabVC.showError(error)
+            }
+        }
     }
-    
-    
 }

@@ -8,13 +8,21 @@
 
 import UIKit
 
+protocol AnnouncementsTabVCDelegate: AnyObject {
+    func announcementsTabVCDidRefresh(_ announcementsTabVC: AnnouncementsTabVC)
+}
+
 class AnnouncementsTabVC: UIViewController, StoryboardViewController {
     
     @IBOutlet private weak var collectionView: UICollectionView!
+    private var refresher: UIRefreshControl!
+    
+    weak var delegate: AnnouncementsTabVCDelegate?
     
     var announcementsTabVM: AnnouncementsTabVM? {
         didSet {
             if isViewLoaded {
+                refresher?.endRefreshing()
                 collectionView.reloadData()
             }
         }
@@ -26,6 +34,15 @@ class AnnouncementsTabVC: UIViewController, StoryboardViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.decelerationRate = .fast
+        
+        refresher = UIRefreshControl()
+        collectionView!.alwaysBounceVertical = true
+        refresher.addTarget(self, action: #selector(reloadData), for: .valueChanged)
+        collectionView!.addSubview(refresher)
+    }
+    
+    @objc private func reloadData() {
+        delegate?.announcementsTabVCDidRefresh(self)
     }
 }
 

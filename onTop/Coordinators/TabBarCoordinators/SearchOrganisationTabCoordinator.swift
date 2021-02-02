@@ -14,6 +14,7 @@ class SearchOrganisationTabCoordinator: Coordinator {
     private let searchOrganisationTabVC: SearchOrganisationTabVC
     private let navigationVC: UINavigationController
     private var announcementCoordinator: AnnouncementCoordinator?
+    weak var initiateDelegate: InitiateConversationCoordinatorDelegate?
     
     init(presenter: UITabBarController, serviceProvider: ServiceProvider){
         self.presenter = presenter
@@ -42,25 +43,41 @@ class SearchOrganisationTabCoordinator: Coordinator {
 }
 
 extension SearchOrganisationTabCoordinator: SearchOrganisationTabVCDelegate {
-    func searchOrganisationTabVCDidToggleSubscribe(_ searchOrganisationTabVC: SearchOrganisationTabVC) {
-        
-        guard let organisationVM = self.searchOrganisationTabVC.organisationVM else { return }
-        let organisation = Organisation(id: organisationVM.organisation.id,
-                                        name: organisationVM.organisation.name,
-                                        isUserSubscriber: !organisationVM.organisation.isUserSubscriber)
-        
+    func searchOrganisationTabVCDidAppear(_ searchOrganisationTabVC: SearchOrganisationTabVC) {
+        guard let organisationVM = self.searchOrganisationTabVC.organisationVM,
+              let organisation = serviceProvider.subscriptionService.organisations.first(where: { $0.id == organisationVM.organisation.id })  else { return }
+
         self.searchOrganisationTabVC.organisationVM = OrganisationVM(organisation: organisation)
+    }
+
+    func searchOrganisationTabVCDidToggleSubscribe(_ searchOrganisationTabVC: SearchOrganisationTabVC) {
+        guard let organisationVM = self.searchOrganisationTabVC.organisationVM else { return }
+        serviceProvider.subscriptionService.toggleSubscription(to: organisationVM.organisation) { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+            case .failure(let error):
+                self.searchOrganisationTabVC.showError(error)
+            case .success(_):
+                let organisation = Organisation(id: organisationVM.organisation.id,
+                                                name: organisationVM.organisation.name,
+                                                isUserSubscriber: !organisationVM.organisation.isUserSubscriber)
+                self.searchOrganisationTabVC.organisationVM = OrganisationVM(organisation: organisation)
+            }
+        }
     }
     
     func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC, didSearchFor text: String) {
-        serviceProvider.organisationsService.getOrganisationName(containing: text) {
+        serviceProvider.organisationsService.getOrganisationName(top: 5, containing: text) {
             [weak self] result in
             
             guard let self = self else { return }
             
             switch result {
             case .success(let organisations):
-                self.searchOrganisationTabVC.organisationsVM = OrganisationsVM(organisations: organisations)
+                let org = self.serviceProvider.subscriptionService.organisations
+                let goodOrg = org.filter { organisations.map { $0.id }.contains($0.id) }
+                self.searchOrganisationTabVC.organisationsVM = OrganisationsVM(organisations: goodOrg)
             case .failure(let error):
                 self.searchOrganisationTabVC.showError(error)
             }
@@ -69,7 +86,7 @@ extension SearchOrganisationTabCoordinator: SearchOrganisationTabVCDelegate {
     
     func searchOrganisationTabVC(_ searchOrganisationTabVC: SearchOrganisationTabVC, didSelect organisation: Organisation) {
         self.searchOrganisationTabVC.organisationsVM = nil
-        serviceProvider.announcementsService.getAnnouncements(for: organisation.name) {
+        serviceProvider.announcementsService.getAnnouncements(for: organisation) {
             [weak self] result in
             
             guard let self = self else { return }
@@ -89,12 +106,34 @@ extension SearchOrganisationTabCoordinator: SearchOrganisationTabVCDelegate {
 extension SearchOrganisationTabCoordinator: AnnouncementsTabVMDelegate {
     func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect announcement: Announcement) {
         announcementCoordinator = AnnouncementCoordinator(presenter: navigationVC, serviceProvider: serviceProvider, announcement: announcement)
+        announcementCoordinator?.initiateDelegate = initiateDelegate
         announcementCoordinator?.start()
     }
     
-    func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect organistion: String) {
+    func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect organistionName: String) {
         
     }
-    
-    
+}
+
+extension SearchOrganisationTabCoordinator: AnnouncementsTabCoordinatorDelegate {
+    func announcementsTabCoordinator(_ announcementsTabCoordinator: AnnouncementsTabCoordinator, didSelect organisation: Organisation) {
+        searchOrganisationTabVC.tabBarController?.selectedIndex = 1
+        searchOrganisationTabVC.setSearchedString(organisation.name)
+        searchOrganisationTabVC.organisationsVM = nil
+        serviceProvider.announcementsService.getAnnouncements(for: organisation) {
+            [weak self] result in
+            
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let announcements):
+                self.searchOrganisationTabVC.organisationVM = OrganisationVM(organisation: organisation)
+                self.searchOrganisationTabVC.announcementsTabVM = AnnouncementsTabVM(announcements: announcements)
+                self.searchOrganisationTabVC.announcementsTabVM?.delegate = self
+            case .failure(let error):
+                self.searchOrganisationTabVC.showError(error)
+            }
+        }
+    }
+
 }

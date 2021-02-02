@@ -35,15 +35,6 @@ class AnnouncementHeadlineCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    var announcementImage: UIImage? {
-        get {
-            return announcementHeadlineView.imageView?.image
-        }
-        set {
-            announcementHeadlineView.imageView?.image = newValue
-        }
-    }
-    
     var announcementOrganisationName: String {
         get {
             guard let organisationName = announcementHeadlineView.organisationButton.title(for: .normal) else { fatalError() }
@@ -70,11 +61,6 @@ class AnnouncementHeadlineCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    func removeImageView() {
-        guard let imageView = announcementHeadlineView.imageView else { return }
-        imageView.removeFromSuperview()
-    }
-    
     override var tag: Int {
         didSet {
             announcementHeadlineView.tag = tag
@@ -85,5 +71,14 @@ class AnnouncementHeadlineCollectionViewCell: UICollectionViewCell {
         didSet {
             announcementHeadlineView.delegate = announcementDelegate
         }
+    }
+    
+    func removeImageView() {
+        guard let imageView = announcementHeadlineView.imageView else { return }
+        imageView.removeFromSuperview()
+    }
+    
+    func setAnnouncementImageUrl(_ url: URL) {
+        announcementHeadlineView.imageView?.loadImageUsingUrl(url)
     }
 }

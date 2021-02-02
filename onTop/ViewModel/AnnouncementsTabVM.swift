@@ -10,7 +10,7 @@ import UIKit
 
 protocol AnnouncementsTabVMDelegate: AnyObject {
     func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect announcement: Announcement)
-    func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect organistion: String)
+    func announcementsTabVM(_ announcementsTabVM: AnnouncementsTabVM, didSelect organistionName: String)
 }
 
 class AnnouncementsTabVM {
@@ -37,13 +37,7 @@ class AnnouncementsTabVM {
         }
         
         if let imageUrl = announcement.imageUrl {
-            DispatchQueue.global().async {
-                if let imageData = try? Data(contentsOf: imageUrl) {
-                    DispatchQueue.main.async {
-                        cell.announcementImage = UIImage(data: imageData)
-                    }
-                }
-            }
+            cell.setAnnouncementImageUrl(imageUrl)
         } else {
             cell.removeImageView()
         }
@@ -57,8 +51,7 @@ extension AnnouncementsTabVM: AnnouncementHeadlineDelegate {
     }
     
     func announcementHeadlineDidTapOnOrganisation(_ announcementHeadline: AnnouncementHeadline, organisationName: String) {
-        let organisation = announcements[announcementHeadline.tag].organisationName
-        delegate?.announcementsTabVM(self, didSelect: organisation)
+        delegate?.announcementsTabVM(self, didSelect: organisationName)
     }
 }
 

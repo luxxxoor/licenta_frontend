@@ -16,9 +16,20 @@ class OrganisationsRemoteServiceMock: OrganisationsRemoteService {
                                                  Organisation(id: 3, name: "Nemaivazut", isUserSubscriber: false),
                                                  Organisation(id: 4, name: "waka waka waka waka waka waka waka", isUserSubscriber: false)]
     
-    func getOrganisationName(containing text: String, completion: @escaping GetOrganisationsByNameCompletion) {
+    func getOrganisationName(top number: Int, containing text: String, completion: @escaping GetOrganisationsByNameCompletion) {
         
         let matchedOrganisations = organisations.filter { $0.name.lowercased().contains(text.lowercased()) }
-        completion(Result.success(matchedOrganisations))
+        completion(Result.success(Array(matchedOrganisations.prefix(number))))
+    }
+    
+    func getOrganisation(by name: String, completion: @escaping GetOrganisationByNameCompletion) {
+        if let matchedOrganisation = organisations.first(where: { $0.name == name }) {
+            completion(Result.success(matchedOrganisation))
+        }
+    }
+    
+    func getMostPopularOrganisations(top number: Int, completion: @escaping GetOrganisationsByNameCompletion) {
+        
+        completion(Result.success(Array(organisations.prefix(number))))
     }
 }

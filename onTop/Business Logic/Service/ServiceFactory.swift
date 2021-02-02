@@ -9,9 +9,9 @@
 import Foundation
 
 final class ServiceFactory: ServiceProvider {
-    let loginService = LoginService(remote: LoginRemoteServiceReal())
-    let registerService = RegisterService(remote: RegisterRemoteServiceReal())
     let announcementsService = AnnouncementsService(remote: AnnouncementsRemoteServiceReal())
-    let organisationsService = OrganisationsService(remote: OrganisationsRemoteServiceMock())
-    let commentsService = CommentsService(remote: CommentsRemoteServiceMock())
+    let organisationsService = OrganisationsService(remote: OrganisationsRemoteServiceReal())
+    let commentsService = CommentsService(remote: CommentsRemoteServiceReal())
+    let subscriptionService = SubscriptionService(remote: SubscriptionRemoteServiceReal())
+    let chatService = ChatService()
 }

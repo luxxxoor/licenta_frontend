@@ -9,25 +9,21 @@
 import UIKit
 
 class AnnouncementVM {
-    private let announcement: Announcement
+    private(set) var announcement: Announcement
+    private(set) var canStartConversation: Bool?
     
-    init(announcement: Announcement) {
+    init(announcement: Announcement, canStartConversation: Bool? = nil) {
         self.announcement = announcement
+        self.canStartConversation = canStartConversation
     }
     
     func setTitleLabel(_ label: UILabel) {
         label.text = announcement.title
     }
     
-    func setImageView(_ imageView: UIImageView) {
+    func setImageView(_ imageView: ImageViewForReusableCells) {
         if let imageUrl = announcement.imageUrl {
-            DispatchQueue.global().async {
-                if let imageData = try? Data(contentsOf: imageUrl) {
-                    DispatchQueue.main.async {
-                        imageView.image = UIImage(data: imageData)
-                    }
-                }
-            }
+            imageView.loadImageUsingUrl(imageUrl)
         } else {
             imageView.removeFromSuperview()
         }

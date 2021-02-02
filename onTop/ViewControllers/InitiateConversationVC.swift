@@ -10,7 +10,7 @@ import UIKit
 
 protocol InitiateConversationVCDelegate: AnyObject {
     func initiateConversationVCDidTapCancel(_ initiateConversationVC: InitiateConversationVC)
-    func initiateConversationVCDidTapSend(_ initiateConversationVC: InitiateConversationVC)
+    func initiateConversationVCDidTapSend(_ initiateConversationVC: InitiateConversationVC, chat: Chat, message: Message)
 
 }
 
@@ -19,8 +19,9 @@ class InitiateConversationVC: UIViewController, StoryboardViewController {
     @IBOutlet private weak var sendButton: UIButton!
     @IBOutlet private weak var organisationLabel: UILabel!
     @IBOutlet private weak var dateLabel: UILabel!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: ImageViewForReusableCells!
     @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var textField: UITextField!
     
     var announcementVM: AnnouncementVM? {
         didSet {
@@ -45,7 +46,9 @@ class InitiateConversationVC: UIViewController, StoryboardViewController {
     
     
     @IBAction private func didTapSend(_ sender: UIButton) {
-        delegate?.initiateConversationVCDidTapSend(self)
+        if let annoucement = announcementVM?.announcement {
+            delegate?.initiateConversationVCDidTapSend(self, chat: Chat(announcementId: annoucement.id, organisationName: annoucement.organisationName, announcementTitle: annoucement.title), message: Message(text: textField.text!, isUser: true))
+        }
     }
     
     @IBAction private func didWrite(_ sender: UITextField) {

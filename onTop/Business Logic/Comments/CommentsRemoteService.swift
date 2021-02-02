@@ -9,11 +9,13 @@
 import Foundation
 
 protocol CommentsRemoteService {
-    typealias GetCommentsCompletion = (Result<[Comment]>) -> Void
+    typealias SubmitCommentCompletion = (Error?) -> Void
+    typealias GetCommentsCompletion = (Result<[Comment], Error>) -> Void
     
+    func submitComment(_ comment: String, for announcementId: Int,  completion: @escaping SubmitCommentCompletion)
     func getComments(for announcementId: Int, completion: @escaping GetCommentsCompletion)
 }
 
 struct CommentsRemoteServiceConstants {
-    static let address = "http://localhost:8604"
+    static let address = "http://localhost:8606"
 }

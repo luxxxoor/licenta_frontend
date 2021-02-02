@@ -7,9 +7,26 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Comment {
     let id: Int
     let userName: String
     let description: String
+}
+
+extension Comment {
+    init?(json: JSON) {
+        self.id = json[BackendKeys.id].intValue
+        self.userName = json[BackendKeys.userName].stringValue
+        self.description = json[BackendKeys.description].stringValue
+    }
+}
+
+private extension Comment {
+    enum BackendKeys {
+        static let id = "id"
+        static let userName = "userName"
+        static let description = "text"
+    }
 }

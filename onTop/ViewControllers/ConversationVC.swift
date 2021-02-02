@@ -8,18 +8,19 @@
 
 import UIKit
 
+protocol ConversationVCDelegate: AnyObject {
+    func conversationVC(_ conversationVC: ConversationVC, didTap organisationName: String)
+}
+
 class ConversationVC: UIViewController, StoryboardViewController {
-    
-    private let mesaje: [String] = ["Bună ziua, de când se vor aplica schimbările ?",
-                                    "Bună ziua, începănd cu data de 01.09.2019 însă va fi doar temporar.",
-                                    "Ce înseamnă temporar ?",
-                                    "Până în data de 01.12.2019",
-                                    "Mulțumesc mult !"]
-    
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var organisationLabel: UILabel!
     @IBOutlet private weak var announcementTitleButton: UIButton!
     @IBOutlet private weak var tableView: UITableView!
+    
+    var chat: Chat!
+    var messages: [Message] = []
+    weak var delegate: ConversationVCDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +28,18 @@ class ConversationVC: UIViewController, StoryboardViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        organisationLabel.text = "CTP"
-        announcementTitleButton.setTitle("Schimbare traseu Linia 4", for: .normal)
+        organisationLabel.text = chat.organisationName
+        announcementTitleButton.setTitle(chat.announcementTitle, for: .normal)
         
         setupBackButton()
+    }
+    
+    @IBAction private func didPressBack(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func didTapOnConversation(_ sender: UIButton) {
+        delegate?.conversationVC(self, didTap: chat.organisationName)
     }
     
     private func setupBackButton() {
@@ -47,7 +56,7 @@ class ConversationVC: UIViewController, StoryboardViewController {
 
 extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return messages.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -55,9 +64,9 @@ extension ConversationVC: UITableViewDelegate, UITableViewDataSource {
         
         if let cell = cell as? MessageTableViewCell {
             let index = indexPath.row
-            cell.messageLabel.text = mesaje[index]
+            cell.messageLabel.text = messages[index].text
             cell.messageLabel.layer.masksToBounds = true
-            if index % 2 == 1 {
+            if !messages[index].isUser {
                 cell.messageLeadingConstraint.isActive = false
                 cell.messageLeadingConstraint = cell.messageLabel.leadingAnchor.constraint(greaterThanOrEqualTo: cell.leadingAnchor, constant: 100)
                 cell.messageLeadingConstraint.isActive = true

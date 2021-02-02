@@ -18,7 +18,7 @@ class AnnouncementHeadline: IBView {
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var organisationButton: UIButton!
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var imageView: UIImageView?
+    @IBOutlet weak var imageView: ImageViewForReusableCells?
     @IBOutlet private weak var headerView: UIView!
     @IBOutlet private weak var stackView: UIStackView!
     @IBOutlet private weak var readMoreButton: UIButton!

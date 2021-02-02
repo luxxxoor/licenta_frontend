@@ -7,9 +7,26 @@
 //
 
 import Foundation
+import SwiftyJSON
 
 struct Organisation {
     let id: Int
     let name: String
     let isUserSubscriber: Bool
+}
+
+extension Organisation {
+    init?(json: JSON) {
+        self.id = json[BackendKeys.id].intValue
+        self.name = json[BackendKeys.name].stringValue
+        self.isUserSubscriber = json[BackendKeys.isUserSubscriber].boolValue
+    }
+}
+
+private extension Organisation {
+    enum BackendKeys {
+        static let id = "id"
+        static let name = "name"
+        static let isUserSubscriber = "isUserSubscriber"
+    }
 }

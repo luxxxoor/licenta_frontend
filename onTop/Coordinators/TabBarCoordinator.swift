@@ -14,7 +14,7 @@ class TabBarCoordinator: Coordinator {
     private let serviceProvider: ServiceProvider
     private let announcementsTabCoordinator: AnnouncementsTabCoordinator
     private let searchOrganisationTabCoordinator: SearchOrganisationTabCoordinator
-    private let chatOrganisationTabCoordinator: ChatOrganisationTabCoordinator
+    private let chatTabTableCoordinator: ChatTabTableCoordinator
     private let settingsTabCoordinator: SettingsTabCoordinator
     private let tabBarVC: TabBarVC
     
@@ -24,17 +24,21 @@ class TabBarCoordinator: Coordinator {
         self.tabBarVC = TabBarVC.instantiate()
         self.announcementsTabCoordinator = AnnouncementsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
         self.searchOrganisationTabCoordinator = SearchOrganisationTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
-        self.chatOrganisationTabCoordinator = ChatOrganisationTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
+        self.chatTabTableCoordinator = ChatTabTableCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
         self.settingsTabCoordinator = SettingsTabCoordinator(presenter: tabBarVC, serviceProvider: serviceProvider)
+        
+        self.announcementsTabCoordinator.delegate = searchOrganisationTabCoordinator
+        self.announcementsTabCoordinator.initiateDelegate = chatTabTableCoordinator
+        self.searchOrganisationTabCoordinator.initiateDelegate = chatTabTableCoordinator
     }
     
     func start() {
         announcementsTabCoordinator.start()
         searchOrganisationTabCoordinator.start()
-        chatOrganisationTabCoordinator.start()
+        chatTabTableCoordinator.start()
         settingsTabCoordinator.start()
+        tabBarVC.selectedIndex = 1
         presenter.pushViewController(tabBarVC, animated: true)
-        #warning("not working, ask mihai")
         tabBarVC.selectedIndex = 0
     }
 }

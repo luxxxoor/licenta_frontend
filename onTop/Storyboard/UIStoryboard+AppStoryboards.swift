@@ -10,4 +10,5 @@ import UIKit
 
 extension UIStoryboard {
     static let main = UIStoryboard(name: "Main", bundle: nil)
+    static let auth = UIStoryboard(name: "Auth", bundle: nil)
 }

@@ -19,7 +19,7 @@ class AnnouncementsService {
         remote.getAnnouncements(completion: completion)
     }
     
-    func getAnnouncements(for organisation: String, completion: @escaping AnnouncementsRemoteService.GetAnnouncementsForOrganisationCompletion) {
+    func getAnnouncements(for organisation: Organisation, completion: @escaping AnnouncementsRemoteService.GetAnnouncementsForOrganisationCompletion) {
         remote.getAnnouncements(for: organisation, completion: completion)
     }
 }

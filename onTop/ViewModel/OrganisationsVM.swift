@@ -47,6 +47,29 @@ class OrganisationsVM {
         
         cell.tag = indexPath.row
     }
+    
+    func configureUnsubscribeCell(_ cell: SubscribeTableViewCell, at indexPath: IndexPath) {
+        let organisation = organisations[indexPath.row]
+        cell.organisationName.text = organisation.name
+        let subscribeButtonTitle: String
+        
+        subscribeButtonTitle = "  Dezabonează-te  "
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: Constants.font,
+            .foregroundColor: Constants.titleColor
+        ]
+        
+        let buttonAttributedTitle = NSMutableAttributedString(string: subscribeButtonTitle, attributes: attributes)
+        
+        cell.subscribeButton.backgroundColor = Constants.backgroundColor
+        cell.subscribeButton.layer.cornerRadius = Constants.cornerRadius
+        cell.subscribeButton.setAttributedTitle(buttonAttributedTitle, for: .normal)
+        
+        cell.organisationName.textColor = Constants.textColor
+        
+        cell.tag = indexPath.row
+    }
 }
 
 private extension OrganisationsVM {

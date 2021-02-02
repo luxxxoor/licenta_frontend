@@ -10,13 +10,12 @@ import UIKit
 
 protocol FirstLoginVCDelegate: AnyObject {
     func firstLoginVCDidTapContinue(_ firstLoginVC: FirstLoginVC)
-    func firstLoginVC(_ firstLoginVC: FirstLoginVC, didSubscribe organisation: Organisation)
-    func firstLoginVC(_ firstLoginVC: FirstLoginVC, didSeach text: String)
+    func firstLoginVC(_ firstLoginVC: FirstLoginVC, didToggleSubscribe organisation: Organisation)
+    func firstLoginVC(_ firstLoginVC: FirstLoginVC, didSeach text: String?)
 }
 
 class FirstLoginVC: UIViewController, StoryboardViewController {
     @IBOutlet private weak var tableView: UITableView!
-    @IBOutlet private weak var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private weak var continueButton: UIButton!
     
     weak var delegate: FirstLoginVCDelegate?
@@ -26,6 +25,14 @@ class FirstLoginVC: UIViewController, StoryboardViewController {
         
         setupTableView()
         setupContinueButton()
+        reloadTableView()
+
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard (_:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+
+    @objc private func dismissKeyboard (_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
     
     var organisationsVM: OrganisationsVM? {
@@ -44,20 +51,14 @@ class FirstLoginVC: UIViewController, StoryboardViewController {
         guard let organisationsVM = organisationsVM else { return }
         
         let organisation = organisationsVM.organisations[sender.tag]
-        
-        delegate?.firstLoginVC(self, didSubscribe: organisation)
+        delegate?.firstLoginVC(self, didToggleSubscribe: organisation)
     }
     
     @IBAction private func didWriteOrganisation(_ sender: UITextField) {
-        if let text = sender.text, !text.isEmpty {
-            delegate?.firstLoginVC(self, didSeach: text)
-        } else {
-            tableView.isHidden =  true
-        }
+        delegate?.firstLoginVC(self, didSeach: sender.text)
     }
     
     private func reloadTableView() {
-        #warning("nu apare tot ce naiba")
         tableView.reloadData()
         
         guard let organisationsVM = organisationsVM,
@@ -67,12 +68,7 @@ class FirstLoginVC: UIViewController, StoryboardViewController {
                 return
         }
         
-        let size = tableView.visibleCells.map { $0.bounds.height }.reduce(0, +)
-        
-        tableViewHeightConstraint.isActive = false
-        tableViewHeightConstraint = tableView.heightAnchor.constraint(equalToConstant: size)
-        tableViewHeightConstraint.priority = .defaultHigh
-        tableViewHeightConstraint.isActive = true
+        tableView.updateConstraints()
         
         tableView.isHidden = false
     }
@@ -100,7 +96,6 @@ class FirstLoginVC: UIViewController, StoryboardViewController {
 
 extension FirstLoginVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("\(organisationsVM?.organisations.count ?? 0) ce naiba")
         return organisationsVM?.organisations.count ?? 0
     }
     
@@ -112,6 +107,10 @@ extension FirstLoginVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
     }
 }
 

@@ -11,6 +11,17 @@ import Foundation
 class CommentsRemoteServiceMock: CommentsRemoteService {
     static private var contor = 0
     
+    var comm1: [Comment] = []
+    var comm2: [Comment] = []
+    
+    func submitComment(_ comment: String, for announcementId: Int, completion: @escaping SubmitCommentCompletion) {
+        if CommentsRemoteServiceMock.contor % 3 == 0 {
+            comm1.append(Comment(id: 0, userName: "licenta.user", description: comment))
+        } else {
+            comm2.append(Comment(id: 0, userName: "licenta.user", description: comment))
+        }
+    }
+    
     func getComments(for announcementId: Int, completion: @escaping GetCommentsCompletion) {
         CommentsRemoteServiceMock.contor += 1
         

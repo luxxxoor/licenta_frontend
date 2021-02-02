@@ -11,12 +11,13 @@ import UIKit
 protocol AnnouncementVCDelegate : AnyObject {
     func announcementVCDidTapBack(_ announcementVC: AnnouncementVC)
     func announcementVCDidTapInitiateConversation(_ announcementVC: AnnouncementVC)
+    func announcementVC(_ announcementVC: AnnouncementVC, didSubmit comment: String)
 }
 
 class AnnouncementVC : UIViewController, StoryboardViewController {
     @IBOutlet private weak var backButton: UIButton!
     @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var imageView: ImageViewForReusableCells!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var descriptionViewWrapper: UIView!
     @IBOutlet private weak var commentsView: UIView!
@@ -54,11 +55,16 @@ class AnnouncementVC : UIViewController, StoryboardViewController {
         setupAnnouncement()
         setupComments()
         setupConversationButton()
-        
-        #warning("ask mihai #2")
         scrollViewInnerHeight.isActive =  false
-        scrollViewInner.heightAnchor.constraint(equalToConstant: announcementStackView.bounds.height)
+//        scrollViewInner.heightAnchor.constraint(equalToConstant: announcementStackView.bounds.height)
+        
+        commentTextBox.delegate = self
+        
+        if !announcementVM!.canStartConversation! {
+            startConversationButton.removeFromSuperview()
+        }
     }
+    
     @IBAction private func didTapInitConversation(_ sender: UIButton) {
         delegate?.announcementVCDidTapInitiateConversation(self)
     }
@@ -100,7 +106,7 @@ class AnnouncementVC : UIViewController, StoryboardViewController {
         reloadTableView()
         
         if commentsVM != nil {
-            commentTextBox.placeholder = Constants.textBoxPlaceHolder
+            commentTextBox?.placeholder = Constants.textBoxPlaceHolder
         }
     }
     
@@ -127,18 +133,12 @@ class AnnouncementVC : UIViewController, StoryboardViewController {
                 return
         }
         
-        let size = commentsTableView.visibleCells.map { $0.bounds.height }.reduce(0, +)
-        
-        commentsTableViewHeightConstraint.isActive = false
-        commentsTableViewHeightConstraint = commentsTableView.heightAnchor.constraint(equalToConstant: size)
-        commentsTableViewHeightConstraint.priority = .defaultHigh
-        commentsTableViewHeightConstraint.isActive = true
-        
+        commentsTableViewHeightConstraint.constant = commentsTableView.contentSize.height
         commentsView.isHidden = false
     }
 }
 
-extension AnnouncementVC : UITableViewDelegate, UITableViewDataSource {
+extension AnnouncementVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return commentsVM?.comments.count ?? 0
     }
@@ -151,6 +151,21 @@ extension AnnouncementVC : UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
+}
+
+extension AnnouncementVC: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        if let text = textField.text {
+            delegate?.announcementVC(self, didSubmit: text)
+        }
+        textField.text = nil
+        return true
     }
 }
 

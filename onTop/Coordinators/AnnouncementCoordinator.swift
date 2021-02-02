@@ -15,13 +15,18 @@ class AnnouncementCoordinator: Coordinator {
     private let announcementVM: AnnouncementVM
     private let announcement: Announcement
     private let initiateConversationCoordinator: InitiateConversationCoordinator
+    weak var initiateDelegate: InitiateConversationCoordinatorDelegate? {
+        didSet {
+            initiateConversationCoordinator.delegate = initiateDelegate
+        }
+    }
     
     init(presenter: UINavigationController, serviceProvider: ServiceProvider, announcement: Announcement){
         self.presenter = presenter
         self.serviceProvider = serviceProvider
         self.announcement = announcement
         self.announcementVC = AnnouncementVC.instantiate()
-        self.announcementVM = AnnouncementVM(announcement: announcement)
+        self.announcementVM = AnnouncementVM(announcement: announcement, canStartConversation: serviceProvider.chatService.isChat(for: announcement.id))
         self.initiateConversationCoordinator = InitiateConversationCoordinator(presenter: presenter, serviceProvider: serviceProvider, announcement: announcement)
         self.announcementVC.delegate = self
         self.announcementVC.announcementVM = announcementVM
@@ -40,7 +45,9 @@ class AnnouncementCoordinator: Coordinator {
             
             switch result {
             case .success(let comments):
-                self.announcementVC.commentsVM = CommentsVM(comments: comments)
+                if !comments.isEmpty {
+                    self.announcementVC.commentsVM = CommentsVM(comments: comments)
+                }
             case .failure(let error):
                 self.announcementVC.showError(error)
             }
@@ -55,5 +62,19 @@ extension AnnouncementCoordinator : AnnouncementVCDelegate {
     
     func announcementVCDidTapBack(_ announcementVC: AnnouncementVC) {
         presenter.popViewController(animated: true)
+    }
+    
+    func announcementVC(_ announcementVC: AnnouncementVC, didSubmit comment: String) {
+        serviceProvider.commentsService.submitComment(comment, for: announcement.id) {
+            [weak self] error in
+            guard let self = self else { return }
+            
+            if let error = error {
+                self.announcementVC.showError(error)
+                return
+            }
+            
+            self.setupCommentsVM()
+        }
     }
 }

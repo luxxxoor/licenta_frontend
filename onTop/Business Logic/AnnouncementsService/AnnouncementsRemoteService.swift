@@ -9,13 +9,13 @@
 import Foundation
 
 protocol AnnouncementsRemoteService {
-    typealias GetAnnouncementsCompletion = (Result<[Announcement]>) -> Void
-    typealias GetAnnouncementsForOrganisationCompletion = (Result<([Announcement])>) -> Void
+    typealias GetAnnouncementsCompletion = (Result<[Announcement], Error>) -> Void
+    typealias GetAnnouncementsForOrganisationCompletion = (Result<[Announcement], Error>) -> Void
     
     func getAnnouncements(completion: @escaping GetAnnouncementsCompletion)
-    func getAnnouncements(for organisation: String,completion: @escaping GetAnnouncementsForOrganisationCompletion)
+    func getAnnouncements(for organisation: Organisation,completion: @escaping GetAnnouncementsForOrganisationCompletion)
 }
 
 struct AnnouncementsRemoteServiceConstants {
-    static let address = "http://localhost:8604"
+    static let address = "http://localhost:8606"
 }
